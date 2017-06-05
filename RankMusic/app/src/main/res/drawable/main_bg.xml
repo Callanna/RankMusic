@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@mipmap/rank_music_bg" android:width="1280dp" android:height="800dp"></item>
+    <item android:drawable="@color/tr_gray_half" android:width="1280dp" android:height="800dp"></item>
+</layer-list>

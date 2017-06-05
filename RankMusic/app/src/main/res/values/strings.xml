@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">RankMusic</string>
+    <string name="text_toprank">巅峰榜</string>
+    <string name="text_hot_rank">热歌</string>
+    <string name="text_uk">欧美</string>
+    <string name="text_local">内地</string>
+    <string name="text_korea">韩国</string>
+    <string name="text_rock">摇滚</string>
+</resources>

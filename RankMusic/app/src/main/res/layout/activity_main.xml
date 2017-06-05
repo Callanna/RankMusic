@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="10dp"
+        android:background="@drawable/main_bg"
+        tools:context="com.callanna.rankmusic.ui.activity.MainActivity">
+
+        <LinearLayout
+            android:id="@+id/top"
+            android:layout_width="400dp"
+            android:layout_height="45dp"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:background="@drawable/search_bg"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginLeft="20dp"
+                android:src="@mipmap/search" />
+
+            <EditText
+                android:id="@+id/et_search"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null" />
+        </LinearLayout>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/top"
+            android:scrollX="120dp"
+            android:padding="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="250dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/hot_song_bg"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/text_top"
+                        android:text="@string/text_toprank" />
+
+                    <TextView
+                        style="@style/text_rankname"
+                        android:text="@string/text_hot_rank" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/list_hot"
+                        android:layout_marginTop="80dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                    </android.support.v7.widget.RecyclerView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="250dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/ic_uk_bg"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/text_top"
+                        android:text="@string/text_toprank" />
+
+                    <TextView
+                        style="@style/text_rankname"
+                        android:text="@string/text_uk" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/list_uk"
+                        android:layout_marginTop="80dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="250dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/ic_local_bg"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/text_top"
+                        android:text="@string/text_toprank" />
+
+                    <TextView
+                        style="@style/text_rankname"
+                        android:text="@string/text_local" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/list_local"
+                        android:layout_marginTop="80dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="250dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/ic_korea_bg"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/text_top"
+                        android:text="@string/text_toprank" />
+
+                    <TextView
+                        style="@style/text_rankname"
+                        android:text="@string/text_korea" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/list_korea"
+                        android:layout_marginTop="80dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="250dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rock_bg"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/text_top"
+                        android:text="@string/text_toprank" />
+
+                    <TextView
+                        style="@style/text_rankname"
+                        android:text="@string/text_rock" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/list_rock"
+                        android:layout_marginTop="80dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                    </android.support.v7.widget.RecyclerView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#ffffff</color>
+    <color name="tr_gray_half">#883c3c3c</color>
+    <color name="tr_write_half">#88fcfcfc</color>
+    <color name="tr_purple_half">#669050af</color>
+    <color name="tr_yellow_half">#66E59F3C</color>
+    <color name="tr_green_half">#55017C53</color>
+    <color name="tr_oragle_half">#660073B0</color>
+    <color name="write_half">#88ffffff</color>
+    <color name="write">#ffffff</color>
+</resources>

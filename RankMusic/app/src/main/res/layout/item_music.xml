@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="song"
+            type="com.callanna.rankmusic.bean.Music" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+
+        <TextView
+            android:id="@+id/tv_rank"
+            style="@style/text_rankname"
+            android:layout_centerVertical="true"
+            android:layout_width="60dp"
+            android:paddingBottom="20dp"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:text="1" />
+
+        <TextView
+            android:id="@+id/tv_songname"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:textSize="24sp"
+            android:textColor="@color/write"
+            android:gravity="center_vertical|left"
+            android:layout_toRightOf="@+id/tv_rank"
+            android:text="@{song.songname}" />
+
+        <TextView
+            android:id="@+id/tv_singer"
+            android:gravity="center_vertical|left"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:textSize="18sp"
+            android:textColor="@color/write_half"
+            android:layout_below="@+id/tv_songname"
+            android:layout_toRightOf="@+id/tv_rank"
+            android:text="@{song.singername}" />
+    </RelativeLayout>
+
+</layout>

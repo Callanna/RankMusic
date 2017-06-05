@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@mipmap/ic_rock"></item>
+    <item >
+        <shape >
+            <solid android:color="@color/tr_oragle_half"></solid>
+            <size android:height="200dp" android:width="600dp"></size>
+        </shape>
+    </item>
+</layer-list>
