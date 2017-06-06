@@ -7,20 +7,23 @@ import java.util.*
 /**
  * Created by Callanna on 2017/6/5.
  */
-class MediaPlayerUtil{
+class MediaPlayerUtil {
     protected lateinit var mediaplayer: MediaPlayer
     protected lateinit var mTimer: Timer
-    protected lateinit var timetask:TimerTask
-    lateinit var playStateChange:PlayStateChangeListener
+    protected lateinit var timetask: TimerTask
+    private lateinit var mUrl: String
+    lateinit var playStateChange: PlayStateChangeListener
+
+
 
     init {
-        MediaPlayerUtil.instance = this
         mediaplayer = MediaPlayer()
         mediaplayer.setOnErrorListener({ mp, what, extra ->
             Log.d("duanyl", "what:" + what)
             false
         })
         mediaplayer.setOnCompletionListener {
+            // mediaplayer.reset()
             playStateChange!!.onComplete()
         }
 
@@ -28,48 +31,82 @@ class MediaPlayerUtil{
             mediaplayer!!.start()
             playStateChange!!.onStart()
         }
+       initTimer()
+    }
 
+    fun initTimer() {
         mTimer = Timer()
         timetask = object : TimerTask() {
             override fun run() {
-                if(mediaplayer!!.isPlaying){
+                if (mediaplayer!!.isPlaying) {
                     val position = mediaplayer!!.getCurrentPosition()
                     val duration = mediaplayer!!.getDuration()
-                    if(playStateChange!= null){
-                        playStateChange!!.onChangeTime(position,duration)
+                    if (playStateChange != null) {
+                        playStateChange!!.onChangeTime(position , duration)
                     }
                 }
             }
         }
     }
 
-    fun play(url:String){
+    fun stopTimer(){
+        if(mTimer != null){
+            mTimer.cancel()
+        }
+        if(timetask != null){
+            timetask.cancel()
+        }
+    }
+
+    fun play(url: String) {
+        Log.d("duanyl","url:"+url)
+        mUrl = url
+        if(mediaplayer!!.isPlaying){
+            mediaplayer!!.stop()
+        }
+        mediaplayer!!.reset()
         mediaplayer!!.setDataSource(url)
         mediaplayer!!.prepareAsync()
-        mTimer!!.schedule(timetask,0,1000)
+        stopTimer()
+        initTimer()
+        mTimer!!.schedule(timetask, 0, 1000)
+
     }
-    fun start(){
+
+    fun start() {
         mediaplayer!!.start()
     }
 
-    fun puase(){
+    fun pause() {
         mediaplayer!!.pause()
         playStateChange!!.onStop()
     }
-    fun stop(){
+
+    fun stop() {
         mediaplayer!!.stop()
         playStateChange!!.onStop()
     }
-    fun seekTo( time:Int){
+
+    fun seekTo(time: Int) {
         mediaplayer!!.seekTo(time)
     }
-    companion object{
-        lateinit var instance: MediaPlayerUtil
+
+    fun getPlayUrl(): String {
+        return mUrl
     }
-    interface PlayStateChangeListener{
+
+    fun isPlaying(): Boolean {
+        return mediaplayer!!.isPlaying
+    }
+
+    companion object {
+        var instance: MediaPlayerUtil = MediaPlayerUtil()
+    }
+
+    interface PlayStateChangeListener {
         fun onStart()
         fun onStop()
         fun onComplete()
-        fun onChangeTime(now:Int,total:Int)
+        fun onChangeTime(now: Int, total: Int)
     }
 }

@@ -29,5 +29,12 @@
         <item name="android:gravity">center_horizontal</item>
         <item name="android:textSize">22sp</item>
     </style>
+    <style name="AVLoadingIndicatorView">
+        <item name="minWidth">68dp</item>
+        <item name="maxWidth">48dp</item>
+        <item name="minHeight">48dp</item>
+        <item name="maxHeight">48dp</item>
+        <item name="indicatorName">LineScaleIndicator</item>
+    </style>
 
 </resources>

@@ -2,10 +2,11 @@ package com.callanna.rankmusic.ui.activity
 
 import android.databinding.DataBindingUtil
 import android.media.MediaPlayer
-import android.net.Uri
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import android.view.View
+import com.callanna.rankmusic.App
 import com.callanna.rankmusic.R
 import com.callanna.rankmusic.bean.Music
 import com.callanna.rankmusic.dagger.compontent.MainMusicModule
@@ -13,7 +14,8 @@ import com.callanna.rankmusic.databinding.ActivityMainBinding
 import com.callanna.rankmusic.mvp.contract.MainContract
 import com.callanna.rankmusic.mvp.presenter.MainPresenter
 import com.callanna.rankmusic.ui.activity.base.BaseBindingActivity
-import com.callanna.rankmusic.ui.adapter.MusicListAdapter
+import com.callanna.rankmusic.ui.adapter.MusicMainListAdapter
+import com.callanna.rankmusic.util.Constants
 import com.callanna.rankmusic.util.getMainComponent
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
@@ -27,11 +29,11 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>(),MainContract.Vie
     private val mListLocal:ArrayList<Music> = ArrayList()
     private val mListUK:ArrayList<Music> = ArrayList()
     private val mListKorea:ArrayList<Music> = ArrayList()
-    private lateinit var mAdapterHot: MusicListAdapter
-    private lateinit var mAdapterRock: MusicListAdapter
-    private lateinit var mAdapterLocal: MusicListAdapter
-    private lateinit var mAdapterUK: MusicListAdapter
-    private lateinit var mAdapterKorea: MusicListAdapter
+    private lateinit var mAdapterHot: MusicMainListAdapter
+    private lateinit var mAdapterRock: MusicMainListAdapter
+    private lateinit var mAdapterLocal: MusicMainListAdapter
+    private lateinit var mAdapterUK: MusicMainListAdapter
+    private lateinit var mAdapterKorea: MusicMainListAdapter
 
     @Inject lateinit var mPresenter : MainPresenter
 
@@ -44,56 +46,78 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>(),MainContract.Vie
 
     override fun initView() {
         getMainComponent().plus(MainMusicModule(this)).inject(this)
-
-        mAdapterHot = MusicListAdapter(mListHot)
-        mAdapterKorea = MusicListAdapter(mListKorea)
-        mAdapterLocal = MusicListAdapter(mListLocal)
-        mAdapterRock = MusicListAdapter(mListRock)
-        mAdapterUK = MusicListAdapter(mListUK)
+        mAdapterHot = MusicMainListAdapter(mListHot)
+        mAdapterKorea = MusicMainListAdapter(mListKorea)
+        mAdapterLocal = MusicMainListAdapter(mListLocal)
+        mAdapterRock = MusicMainListAdapter(mListRock)
+        mAdapterUK = MusicMainListAdapter(mListUK)
 
         with(mBinding!!){
             listHot.adapter = mAdapterHot
             listHot.layoutManager =LinearLayoutManager(context)
             mAdapterHot.setOnItemClickListener { pos ->
-                //TODO
-
+                PlayActivity.startActivity(context,Constants.HOT_SONG,pos)
             }
             listKorea.adapter = mAdapterKorea
             listKorea.layoutManager =LinearLayoutManager(context)
             mAdapterKorea.setOnItemClickListener { pos ->
-                //TODO
-
+                PlayActivity.startActivity(context,Constants.KOREA,pos)
             }
             listLocal.adapter = mAdapterLocal
             listLocal.layoutManager =LinearLayoutManager(context)
             mAdapterLocal.setOnItemClickListener { pos ->
-                //TODO
-
+                PlayActivity.startActivity(context,Constants.LOCAL,pos)
             }
             listRock.adapter = mAdapterRock
             listRock.layoutManager =LinearLayoutManager(context)
             mAdapterRock.setOnItemClickListener { pos ->
-                //TODO
-
+                PlayActivity.startActivity(context,Constants.ROCK,pos)
             }
             list_uk.adapter = mAdapterUK
             list_uk.layoutManager =LinearLayoutManager(context)
             mAdapterUK.setOnItemClickListener { pos ->
-                //TODO
-
+                PlayActivity.startActivity(context,Constants.UK,pos)
             }
         }
 
         mPresenter.getData()
-
-        player.setDataSource(this, Uri.parse("http://ws.stream.qqmusic.qq.com/108709929.m4a?fromtag=46"))
-        player.setOnPreparedListener {
-            listener->
-            player.start()
+        layout_hot.setOnClickListener {
+            PlayActivity.startActivity(context,Constants.HOT_SONG,0)
         }
-        player.prepareAsync()
+        layout_uk.setOnClickListener {
+            PlayActivity.startActivity(context,Constants.UK,0)
+        }
+        layout_local.setOnClickListener {
+            PlayActivity.startActivity(context,Constants.LOCAL,0)
+        }
+        layout_korea.setOnClickListener {
+            PlayActivity.startActivity(context,Constants.KOREA,0)
+        }
+        layout_rock.setOnClickListener {
+            PlayActivity.startActivity(context,Constants.ROCK,0)
+        }
     }
 
+    override fun onResume() {
+        super.onResume()
+        loading_hot.visibility = View.INVISIBLE
+        loading_uk.visibility = View.INVISIBLE
+        loading_local.visibility = View.INVISIBLE
+        loading_rock.visibility = View.INVISIBLE
+        loading_korea.visibility = View.INVISIBLE
+        when(App.playCurrentType){
+            Constants.HOT_SONG->
+                loading_hot.visibility = View.VISIBLE
+            Constants.UK->
+                loading_uk.visibility = View.VISIBLE
+            Constants.LOCAL->
+                loading_local.visibility = View.VISIBLE
+            Constants.ROCK->
+                loading_rock.visibility = View.VISIBLE
+            Constants.KOREA->
+                loading_korea.visibility = View.VISIBLE
+        }
+    }
     override fun setHotSong(result: List<Music>) {
         Log.d("duanyl","setHotSong")
         mListHot.addAll(result.subList(0,3))
@@ -128,4 +152,6 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>(),MainContract.Vie
         super.onDestroy()
 
     }
+
+
 }

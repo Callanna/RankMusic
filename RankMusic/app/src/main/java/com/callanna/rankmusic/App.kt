@@ -1,6 +1,7 @@
 package com.callanna.rankmusic
 
 import android.app.Application
+import android.os.Handler
 import com.callanna.rankmusic.dagger.compontent.ApiComponent
 import com.callanna.rankmusic.dagger.compontent.DaggerApiComponent
 import com.callanna.rankmusic.dagger.module.ApiModule
@@ -16,6 +17,9 @@ class App : Application() {
     }
 
     @Inject lateinit var apiComponent: ApiComponent
+
+    val handler:Handler =  Handler()
+
     override fun onCreate() {
         super.onCreate()
         DaggerApiComponent.builder().apiModule(ApiModule()).appModule(AppModule(this)).build().inject(this)
@@ -25,5 +29,6 @@ class App : Application() {
 
     companion object {
         lateinit var instance: App
+        var playCurrentType:String = ""
     }
 }

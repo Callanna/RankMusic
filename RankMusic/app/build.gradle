@@ -12,6 +12,9 @@ android {
     dataBinding {
         enabled = true
     }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
     defaultConfig {
         applicationId "com.callanna.rankmusic"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -24,6 +27,12 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    repositories {
+        flatDir {
+            dirs 'libs'
         }
     }
 }
@@ -57,6 +66,8 @@ dependencies {
     provided dependencies.javaxAnnotation
 
     kapt dependencies.databindcompiler
+
+    compile(name: 'ijkplayer', ext: 'aar')
 }
 
 kapt {

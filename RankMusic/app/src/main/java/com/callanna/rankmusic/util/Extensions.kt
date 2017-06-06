@@ -13,7 +13,11 @@ fun Context.getMainComponent() = App.instance.apiComponent
 fun Context.toast(msg:String, length:Int = Toast.LENGTH_SHORT){
     Toast.makeText(this, msg, length).show()
 }
-
-fun App.d(tag :String = "RankMusic",msg:String){
+fun Context.runUI(r: () -> Unit){
+    App.instance.handler.post {
+        r()
+    }
+}
+fun Context.Logd(msg:String,tag :String = "RankMusic"){
   Log.d(tag,msg)
 }

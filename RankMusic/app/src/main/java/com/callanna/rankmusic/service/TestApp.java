@@ -2,6 +2,9 @@ package com.callanna.rankmusic.service;
 
 import android.media.MediaPlayer;
 import android.util.Log;
+import android.widget.SeekBar;
+
+import com.callanna.rankmusic.App;
 
 import java.io.IOException;
 import java.util.TimerTask;
@@ -39,6 +42,24 @@ public class TestApp {
         mediaplayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
+
+            }
+        });
+
+        SeekBar seekBar = new SeekBar(App.instance);
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
 
             }
         });

@@ -14,6 +14,7 @@ interface PlayContract{
         fun start()
         fun currentPlayTime(now: Int,total:Int)
         fun setMode(mode :Int = Constants.MODE_ORDER)
+        fun setCurrentSong(song:Music)
     }
     interface Model{
         fun getSongList(type :String): Observable<List<Music>>
@@ -23,6 +24,7 @@ interface PlayContract{
         fun getSongList(type :String = Constants.ALL)
         fun play(position:Int = 0,url:String = "")
         fun stop()
+        fun pause()
         fun start()
         fun seekTo(time:Int)
         fun next()
