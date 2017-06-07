@@ -1,4 +1,4 @@
-package com.callanna.rankmusic.ui.customview
+package customview
 
 import android.animation.ValueAnimator
 import android.graphics.Canvas

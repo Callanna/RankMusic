@@ -3,7 +3,7 @@
     package="com.callanna.rankmusic">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"></uses-permission>
     <application
         android:name=".App"
         android:allowBackup="true"

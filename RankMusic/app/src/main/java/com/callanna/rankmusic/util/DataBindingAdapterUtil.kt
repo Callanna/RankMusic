@@ -7,7 +7,7 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.callanna.rankmusic.App
 import com.callanna.rankmusic.R
-import com.callanna.rankmusic.ui.customview.LoadingIndicatorView
+import customview.LoadingIndicatorView
 import com.callanna.rankmusic.util.Constants
 import jp.wasabeef.glide.transformations.BlurTransformation
 
