@@ -5,6 +5,7 @@ import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -103,6 +104,7 @@ public class LrcEntry implements Comparable<LrcEntry> {
     }
 
     private static List<LrcEntry> parseLine(String line) {
+        Log.d("duanyl", "parseLine: "+line);
         if (TextUtils.isEmpty(line)) {
             return null;
         }

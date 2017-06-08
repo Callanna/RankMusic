@@ -48,7 +48,6 @@ class MusicListFragment : BaseBingingFragment<FragmentMusiclistBinding>() {
         mAdapter.notifyDataSetChanged()
     }
     companion object {
-        val ANDROID = "ANDROID"
         fun newInstance(): MusicListFragment {
             val fragment = MusicListFragment()
             val bundle = Bundle()

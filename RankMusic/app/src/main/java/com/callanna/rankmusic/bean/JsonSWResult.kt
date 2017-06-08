@@ -6,10 +6,8 @@ package com.callanna.rankmusic.bean
 class JsonSWResult(val showapi_res_code :Int,
                     val showapi_res_error:String,
                     val showapi_res_body:JsonSWBody ){
-    fun getlyricList():HashMap<String ,String>{
-        val map :HashMap<String ,String> = HashMap()
-
-        return map;
+    fun getSongLrc(id:String):SongLrc{
+        return SongLrc(id,showapi_res_body.lyric,showapi_res_body.lyric_txt)
     }
 }
 

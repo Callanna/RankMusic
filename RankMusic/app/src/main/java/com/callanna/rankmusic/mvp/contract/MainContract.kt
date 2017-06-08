@@ -1,6 +1,7 @@
 package com.callanna.rankmusic.mvp.contract
 
 import com.callanna.rankmusic.bean.Music
+import com.callanna.rankmusic.bean.SongLrc
 import com.callanna.rankmusic.util.Constants
 import rx.Observable
 
@@ -17,6 +18,7 @@ interface MainContract{
     }
     interface Model{
         fun getData(type :String):Observable<List<Music>>
+        fun getSongLrc(songId:String):Observable<SongLrc>
     }
 
     interface Presenter{

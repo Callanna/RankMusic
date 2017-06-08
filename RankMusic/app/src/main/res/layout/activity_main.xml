@@ -63,10 +63,9 @@
                         android:text="@string/text_hot_rank" />
                     <customview.LoadingIndicatorView
                         android:id="@+id/loading_hot"
-                        android:layout_gravity="center"
                         android:visibility="invisible"
                         android:layout_marginTop="10dp"
-                        android:layout_width="120dp"
+                        android:layout_width="match_parent"
                         android:layout_height="60dp" />
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/list_hot"
@@ -97,7 +96,7 @@
                         android:id="@+id/loading_uk"
                         android:visibility="invisible"
                         android:layout_marginTop="10dp"
-                        android:layout_width="120dp"
+                        android:layout_width="match_parent"
                         android:layout_height="60dp" />
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/list_uk"
@@ -127,7 +126,7 @@
                         android:id="@+id/loading_local"
                         android:visibility="invisible"
                         android:layout_marginTop="10dp"
-                        android:layout_width="120dp"
+                        android:layout_width="match_parent"
                         android:layout_height="60dp" />
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/list_local"
@@ -157,7 +156,7 @@
                         android:visibility="invisible"
                         android:id="@+id/loading_korea"
                         android:layout_marginTop="10dp"
-                        android:layout_width="120dp"
+                        android:layout_width="match_parent"
                         android:layout_height="60dp" />
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/list_korea"

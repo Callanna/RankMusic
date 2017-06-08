@@ -15,14 +15,11 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
-
 import com.callanna.rankmusic.R;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
 import static com.callanna.rankmusic.util.DensityUtils.dp2px;
 import static com.callanna.rankmusic.util.DensityUtils.sp2px;
 

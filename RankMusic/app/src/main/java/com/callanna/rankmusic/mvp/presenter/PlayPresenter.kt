@@ -20,6 +20,7 @@ class PlayPresenter
                     private val mView: PlayContract.View): PlayContract.Presenter, BasePresenter() {
 
 
+
     private val songlist:ArrayList<Music> = ArrayList()
     private var currentPosition:Int = 0
     private var currentMode:Int = Constants.MODE_ORDER
@@ -63,6 +64,7 @@ class PlayPresenter
         }else{
             MediaPlayerUtil.instance.play(url)
         }
+        getSongLrc(songlist[position].singerid.toString())
     }
     override fun seekTo(time:Int) {
         MediaPlayerUtil.instance.seekTo(time * 1000)
@@ -76,7 +78,13 @@ class PlayPresenter
                     mView.setSongList(res)
                 }, { e -> Log.e("duanyl", "error MainMusic:" + e.message) }))
     }
-
+    override fun getSongLrc(songId: String) {
+        addSubscription(mModel.getSongLrc(songId).observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    res ->
+                   mView.setSongLrc(res.lyric)
+                }, { e -> Log.e("duanyl", "error MainMusic:" + e.message) }))
+    }
     override fun stop() {
         MediaPlayerUtil.instance.stop()
     }

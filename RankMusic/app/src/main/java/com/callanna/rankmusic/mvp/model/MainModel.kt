@@ -2,6 +2,7 @@ package com.callanna.rankmusic.mvp.model
 
 import com.callanna.rankmusic.api.MusicApi
 import com.callanna.rankmusic.bean.Music
+import com.callanna.rankmusic.bean.SongLrc
 import com.callanna.rankmusic.mvp.contract.MainContract
 import com.callanna.rankmusic.util.Constants
 import rx.Observable
@@ -12,6 +13,9 @@ import javax.inject.Inject
  */
 class MainModel
 @Inject constructor(private val api:MusicApi):MainContract.Model{
+    override fun getSongLrc(songId: String):Observable<SongLrc> {
+        return api.getSongWord(songId).map({t-> t.getSongLrc(songId)})
+    }
 
     override fun getData(type: String): Observable<List<Music>> {
          when(type){
@@ -36,6 +40,7 @@ class MainModel
 
          }
     }
+
     //
     companion object {
           var cache_hotsong: ArrayList<Music> = ArrayList()

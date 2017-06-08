@@ -17,6 +17,7 @@ import com.callanna.rankmusic.databinding.ActivityPlayBinding
 import com.callanna.rankmusic.mvp.contract.PlayContract
 import com.callanna.rankmusic.mvp.presenter.PlayPresenter
 import com.callanna.rankmusic.ui.activity.base.BaseBindingActivity
+import com.callanna.rankmusic.ui.fragment.LrcFragment
 import com.callanna.rankmusic.ui.fragment.MusicListFragment
 import com.callanna.rankmusic.util.*
 import kotlinx.android.synthetic.main.activity_play.*
@@ -26,6 +27,10 @@ class PlayActivity : BaseBindingActivity<ActivityPlayBinding>(),PlayContract.Vie
 
 
     private  val musiclistFragment :MusicListFragment = MusicListFragment.newInstance()
+
+    private  val lrcFragment :LrcFragment = LrcFragment.newInstance()
+
+
     @Inject lateinit var mPresenter:PlayPresenter
     override fun initView() {
         mBinding.type = intent.getStringExtra(TYPE)
@@ -81,6 +86,13 @@ class PlayActivity : BaseBindingActivity<ActivityPlayBinding>(),PlayContract.Vie
                 mPresenter.start()
             }
         }
+        cb_word.setOnClickListener {
+            if (cb_word.isChecked){
+                MainContentUtil.getInstance().addMainContent(lrcFragment,false)
+            }else{
+                MainContentUtil.getInstance().addMainContent(musiclistFragment,false)
+            }
+        }
         seekbar_song.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                if(fromUser){
@@ -109,6 +121,10 @@ class PlayActivity : BaseBindingActivity<ActivityPlayBinding>(),PlayContract.Vie
         mPresenter.play(pos)
         mBinding.song = result[pos]
     }
+    override fun setSongLrc(lrc:String) {
+        lrcFragment.setSongLrc(lrc)
+    }
+
     override fun setCurrentSong(song: Music) {
         mBinding.song = song
         mBinding.executePendingBindings()
@@ -134,6 +150,7 @@ class PlayActivity : BaseBindingActivity<ActivityPlayBinding>(),PlayContract.Vie
             tv_song_time.text=strnow+"/"+strtotal
             seekbar_song.max = total
             seekbar_song.progress = now
+            lrcFragment.update(now.toLong())
         }
     }
 
