@@ -12,6 +12,7 @@ class SoundUtils private constructor(context: Context) {
 
     init {
         this.audiomanage = context.applicationContext.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+
     }
 
     val soundMax: Int

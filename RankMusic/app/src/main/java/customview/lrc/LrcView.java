@@ -181,6 +181,8 @@ public class LrcView extends View {
                 }.execute(lrcFile);
             }
         });
+
+        new String();
     }
 
     /**
@@ -193,7 +195,6 @@ public class LrcView extends View {
             @Override
             public void run() {
                 reset();
-
                 setFlag(lrcText);
                 new AsyncTask<String, Integer, List<LrcEntry>>() {
                     @Override

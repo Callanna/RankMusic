@@ -1,9 +1,6 @@
 package com.callanna.rankmusic.api
 
-import com.callanna.rankmusic.bean.JsonResult
-import com.callanna.rankmusic.bean.JsonSWResult
-import com.callanna.rankmusic.bean.Music
-import com.callanna.rankmusic.bean.Song
+import com.callanna.rankmusic.bean.*
 import retrofit2.http.GET
 import retrofit2.http.Query
 import rx.Observable
@@ -22,5 +19,5 @@ interface MusicApi{
     fun getSongWord(@Query("musicid") musicid:String):Observable<JsonSWResult>
 
     @GET("search")
-    fun search(@Query("keyword") keyword:String,@Query("page") page:String = "0"):Observable<List<Song>>
+    fun search(@Query("keyword") keyword:String,@Query("page") page:String = "0"):Observable<JsonSearch<List<Song>>>
 }

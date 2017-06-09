@@ -86,6 +86,7 @@ public class LrcEntry implements Comparable<LrcEntry> {
     }
 
     static List<LrcEntry> parseLrc(String lrcText) {
+        Log.d("duanyl", "parseLrc: ");
         if (TextUtils.isEmpty(lrcText)) {
             return null;
         }

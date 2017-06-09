@@ -13,6 +13,18 @@ import javax.inject.Inject
  */
 class MainModel
 @Inject constructor(private val api:MusicApi):MainContract.Model{
+    override fun searchByKey(key: String): Observable<List<Music>> {
+        return  api.search(key).map({t ->
+            var songs = t.getSongList()
+            var musics =  ArrayList<Music>()
+            for(item in songs){
+               musics.add(Music(item.songname,item.seconds,item.albummid,item.songid,item.singerid,item.albumpic_big,
+                       item.albumpic_small,item.downUrl,item.m4a,item.singername,item.albumid))
+            }
+            return@map musics})
+
+    }
+
     override fun getSongLrc(songId: String):Observable<SongLrc> {
         return api.getSongWord(songId).map({t-> t.getSongLrc(songId)})
     }
@@ -36,7 +48,7 @@ class MainModel
                  else Observable.just(cache_korea)
                  else ->
                return if(cache_hotsong.size <= 0)api.getRankByID(Constants.HOT_SONG).map({t ->cache_hotsong.addAll(t.getSongLista()) ; return@map t.getSongLista()})
-               else Observable.just(cache_hotsong)
+                 else Observable.just(cache_hotsong)
 
          }
     }

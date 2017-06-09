@@ -19,11 +19,11 @@ class PlayPresenter
 @Inject constructor(private val mModel: MainModel,
                     private val mView: PlayContract.View): PlayContract.Presenter, BasePresenter() {
 
-
-
     private val songlist:ArrayList<Music> = ArrayList()
     private var currentPosition:Int = 0
     private var currentMode:Int = Constants.MODE_ORDER
+    private var currentType:String = ""
+
     init {
         App.instance.Logd("PlayPresenter  init")
         MediaPlayerUtil.instance.playStateChange = object : MediaPlayerUtil.PlayStateChangeListener{
@@ -57,20 +57,26 @@ class PlayPresenter
         }
     }
     override fun play(position: Int,url: String) {
-        mView.setCurrentSong(songlist[position])
-        currentPosition = position
+        if(MediaPlayerUtil.instance.isPlaying() && App.instance.currentType == currentType){
+            mView.setCurrentSong(songlist[currentPosition])
+        }else {
+            mView.setCurrentSong(songlist[position])
+            currentPosition = position
+        }
         if( url.equals("")) {
             MediaPlayerUtil.instance.play(songlist[position].url)
         }else{
             MediaPlayerUtil.instance.play(url)
         }
-        getSongLrc(songlist[position].singerid.toString())
+        getSongLrc(songlist[position].songid.toString())
+        App.instance.currentType = currentType
     }
     override fun seekTo(time:Int) {
         MediaPlayerUtil.instance.seekTo(time * 1000)
     }
 
     override fun getSongList(type: String) {
+        currentType = type
         addSubscription(mModel.getData(type).observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     res ->
@@ -82,9 +88,24 @@ class PlayPresenter
         addSubscription(mModel.getSongLrc(songId).observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     res ->
-                   mView.setSongLrc(res.lyric)
+                    var str = asciiToString(res.lyric)
+                   mView.setSongLrc(str)
                 }, { e -> Log.e("duanyl", "error MainMusic:" + e.message) }))
     }
+    override fun searchByKey(key: String) {
+        addSubscription(mModel.searchByKey(key).observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    res ->
+                    mView.setSongList(res)
+                }, { e -> Log.e("duanyl", "error MainMusic:" + e.message) }))
+    }
+    private fun asciiToString(lyric: String): String {
+        //歌词里有ASCII 代码  先用这种方式转换一下
+         var temp = lyric.replace("&#32;","").replace("&#38;","&").replace("&#39;","'").replace("&#58;",":").replace("&#46;",".")
+                 .replace("&#45;","-").replace("&#10;","\n").replace("&#13;","\r").replace("&#40;","(").replace("&#41;",")")
+        return temp
+    }
+
     override fun stop() {
         MediaPlayerUtil.instance.stop()
     }

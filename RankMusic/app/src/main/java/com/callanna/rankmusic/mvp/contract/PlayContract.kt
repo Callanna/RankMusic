@@ -24,6 +24,7 @@ interface PlayContract{
     interface Presenter{
         fun getSongList(type :String = Constants.ALL)
         fun getSongLrc(songId:String)
+        fun searchByKey(key:String)
         fun play(position:Int = 0,url:String = "")
         fun stop()
         fun pause()

@@ -16,5 +16,6 @@ class Constants{
         val MODE_ORDER = 0
         val MODE_LOOP = 1
         val MODE_REPEAT = 2
+        val SEARCH = "search"
     }
 }

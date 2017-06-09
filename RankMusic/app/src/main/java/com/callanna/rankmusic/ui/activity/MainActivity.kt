@@ -96,6 +96,10 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>(),MainContract.Vie
         layout_rock.setOnClickListener {
             PlayActivity.startActivity(context,Constants.ROCK,0)
         }
+        imv_search.setOnClickListener {
+            PlayActivity.searchByKey(context,et_search.text.toString())
+        }
+
     }
 
     override fun onResume() {

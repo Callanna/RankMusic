@@ -43,7 +43,11 @@ class PlayActivity : BaseBindingActivity<ActivityPlayBinding>(),PlayContract.Vie
         musiclistFragment.setPresenter(mPresenter)
         MainContentUtil.getInstance().init(this)
         MainContentUtil.getInstance().addMainContent(musiclistFragment,false)
-        mPresenter.getSongList(mBinding.type)
+        if(mBinding.type == Constants.SEARCH) {
+            mPresenter.searchByKey(intent.getStringExtra(KEYWORD))
+        }else{
+            mPresenter.getSongList(mBinding.type)
+        }
         seekbar_voice.max = SoundUtils.getInstance(context).soundMax
         seekbar_voice.progress = SoundUtils.getInstance(context).soundValue
         cb_voice.isChecked = SoundUtils.getInstance(context).isSilence
@@ -120,6 +124,7 @@ class PlayActivity : BaseBindingActivity<ActivityPlayBinding>(),PlayContract.Vie
         val pos = intent.getIntExtra(POSITION,0)
         mPresenter.play(pos)
         mBinding.song = result[pos]
+
     }
     override fun setSongLrc(lrc:String) {
         lrcFragment.setSongLrc(lrc)
@@ -174,6 +179,7 @@ class PlayActivity : BaseBindingActivity<ActivityPlayBinding>(),PlayContract.Vie
     companion object {
         val TYPE  = "TYPE"
         val POSITION = "POSITION"
+        val KEYWORD = "KEY"
         fun startActivity(context: Context,type:String,position:Int= 0,imageView: ImageView = ImageView(context)) {
             val intent = Intent(context, PlayActivity::class.java)
             intent.putExtra(TYPE, type)
@@ -185,7 +191,17 @@ class PlayActivity : BaseBindingActivity<ActivityPlayBinding>(),PlayContract.Vie
                 context.startActivity(intent)
             }
         }
-
+        fun searchByKey(context: Context,key:String="",imageView: ImageView = ImageView(context)) {
+            val intent = Intent(context, PlayActivity::class.java)
+            intent.putExtra(TYPE, Constants.SEARCH)
+            intent.putExtra(KEYWORD,key)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            if(Build.VERSION.SDK_INT > 21) {
+                context.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(context as Activity, imageView, "img").toBundle())
+            }else{
+                context.startActivity(intent)
+            }
+        }
     }
 
 }

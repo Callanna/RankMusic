@@ -7,8 +7,8 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.callanna.rankmusic.App
 import com.callanna.rankmusic.R
-import customview.LoadingIndicatorView
 import com.callanna.rankmusic.util.Constants
+import customview.LoadingIndicatorView
 import jp.wasabeef.glide.transformations.BlurTransformation
 
 /**
@@ -49,8 +49,10 @@ fun loadAsset(imageView: ImageView, id: Int) =
                 textview.text = App.instance.getText(R.string.text_rock)
             Constants.KOREA->
                 textview.text = App.instance.getText(R.string.text_korea)
+            Constants.SEARCH->
+                textview.text = "搜索结果"
             else->
-                textview.text = App.instance.getText(R.string.text_hot_rank)
+                textview.text = ""
          }
 @BindingAdapter("visibility_tag")
      fun visibilityTag(view: LoadingIndicatorView, type:String) =

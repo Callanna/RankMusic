@@ -19,11 +19,10 @@ class App : Application() {
     @Inject lateinit var apiComponent: ApiComponent
 
     val handler:Handler =  Handler()
-
+    var currentType:String = ""
     override fun onCreate() {
         super.onCreate()
         DaggerApiComponent.builder().apiModule(ApiModule()).appModule(AppModule(this)).build().inject(this)
-        //DaggerApiComponent.builder().apiModule(ApiModule()).appModule(AppModule(this)).build().inject(this)
     }
 
 

@@ -6,9 +6,10 @@ package com.callanna.rankmusic.bean
 class JsonSearch<T>(val showapi_res_code :Int,
                     val showapi_res_error:String,
                     val showapi_res_body:JsonSearchBody<T>){
-    fun getSongLista():T{
+    fun getSongList():T{
         return showapi_res_body.pagebean.contentlist;
     }
+
 }
 
 

@@ -10,8 +10,9 @@
         <customview.lrc.LrcView
             android:id="@+id/lrcview"
             app:lrcCurrentTextColor="@color/write"
-            app:lrcDividerHeight="10dp"
+            app:lrcDividerHeight="40dp"
             app:lrcTextSize="32sp"
+            app:lrcPadding="20dp"
             app:lrcNormalTextColor="@color/tr_write_half"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
