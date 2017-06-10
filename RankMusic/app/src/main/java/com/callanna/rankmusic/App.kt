@@ -2,6 +2,7 @@ package com.callanna.rankmusic
 
 import android.app.Application
 import android.os.Handler
+import com.callanna.rankmusic.bean.Music
 import com.callanna.rankmusic.dagger.compontent.ApiComponent
 import com.callanna.rankmusic.dagger.compontent.DaggerApiComponent
 import com.callanna.rankmusic.dagger.module.ApiModule
@@ -20,6 +21,7 @@ class App : Application() {
 
     val handler:Handler =  Handler()
     var currentType:String = ""
+    lateinit var currentSong: Music
     override fun onCreate() {
         super.onCreate()
         DaggerApiComponent.builder().apiModule(ApiModule()).appModule(AppModule(this)).build().inject(this)
@@ -30,4 +32,6 @@ class App : Application() {
         lateinit var instance: App
         var playCurrentType:String = ""
     }
+
+
 }

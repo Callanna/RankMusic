@@ -31,28 +31,13 @@ class ApiModule {
 
     @Provides fun provideBaseUrl() = HttpUrl.parse("http://ali-qqmusic.showapi.com/")
     @Provides fun provideOkhttp(context: Context, interceptor: HttpLoggingInterceptor): OkHttpClient {
-//        val cacheSize = 1024 * 1024 * 10L
-//        val cacheDir = File(context.cacheDir, "http")
-//        val cache = Cache(cacheDir, cacheSize)
         return OkHttpClient.Builder()
-                //.cache(cache)
                 .connectTimeout(30, TimeUnit.SECONDS)
                 .readTimeout(30, TimeUnit.SECONDS)
                 .writeTimeout(30, TimeUnit.SECONDS)
                 .addInterceptor(interceptor)
                 .addInterceptor ({
                     chain->
-//                    val requestBody = chain.request().body();
-//                    val buffer= Buffer()
-//                    requestBody.writeTo(buffer)
-//                    var charset = Charset.forName("UTF-8")
-//                    val contentType = requestBody.contentType()
-//                    if (contentType != null) {
-//                        charset = contentType.charset(Charset.forName("UTF-8"))
-//                    }
-//                    val url = chain.request().url().url()
-//                    val body = buffer.readString(charset)
-//                    val timestamp = System.currentTimeMillis().toString()
                     val request = chain.request().newBuilder()
                             .addHeader("Authorization", "APPCODE 6a4d0966c96742f3ac8da1864856658e")
                             .build()

@@ -14,6 +14,7 @@ import com.callanna.rankmusic.R
 import com.callanna.rankmusic.bean.Music
 import com.callanna.rankmusic.dagger.compontent.PlayMusicModule
 import com.callanna.rankmusic.databinding.ActivityPlayBinding
+import com.callanna.rankmusic.db.MusicDBManager
 import com.callanna.rankmusic.mvp.contract.PlayContract
 import com.callanna.rankmusic.mvp.presenter.PlayPresenter
 import com.callanna.rankmusic.ui.activity.base.BaseBindingActivity
@@ -122,8 +123,14 @@ class PlayActivity : BaseBindingActivity<ActivityPlayBinding>(),PlayContract.Vie
     override fun setSongList(result: List<Music>) {
         musiclistFragment.setData(result)
         val pos = intent.getIntExtra(POSITION,0)
-        mPresenter.play(pos)
-        mBinding.song = result[pos]
+        if(MediaPlayerUtil.instance.isPlaying() && App.instance.currentType == mBinding.type){
+          setCurrentSong(App.instance.currentSong)
+          setSongLrc(MusicDBManager.instance.selectById(App.instance.currentSong.songid.toString())!!.lrc)
+          start()
+        }else {
+            mPresenter.play(pos)
+            mBinding.song = result[pos]
+        }
 
     }
     override fun setSongLrc(lrc:String) {

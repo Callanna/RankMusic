@@ -22,12 +22,12 @@ class IjkPlayerUtil {
         })
         mediaplayer.setOnCompletionListener {
             // mediaplayer.reset()
-            playStateChange!!.onComplete()
+            playStateChange.onComplete()
         }
 
         mediaplayer.setOnPreparedListener {
-            mediaplayer!!.start()
-            playStateChange!!.onStart()
+            mediaplayer.start()
+            playStateChange.onStart()
         }
        initTimer()
     }
@@ -59,34 +59,34 @@ class IjkPlayerUtil {
     fun play(url: String) {
         Log.d("duanyl","url:"+url)
         mUrl = url
-        if(mediaplayer!!.isPlaying){
-            mediaplayer!!.stop()
+        if(mediaplayer.isPlaying){
+            mediaplayer.stop()
         }
-        mediaplayer!!.reset()
-        mediaplayer!!.setDataSource(url)
-        mediaplayer!!.prepareAsync()
+        mediaplayer.reset()
+        mediaplayer.setDataSource(url)
+        mediaplayer.prepareAsync()
         stopTimer()
         initTimer()
-        mTimer!!.schedule(timetask, 0, 1000)
+        mTimer.schedule(timetask, 0, 1000)
 
     }
 
     fun start() {
-        mediaplayer!!.start()
+        mediaplayer.start()
     }
 
     fun puase() {
-        mediaplayer!!.pause()
-        playStateChange!!.onStop()
+        mediaplayer.pause()
+        playStateChange.onStop()
     }
 
     fun stop() {
-        mediaplayer!!.stop()
-        playStateChange!!.onStop()
+        mediaplayer.stop()
+        playStateChange.onStop()
     }
 
     fun seekTo(time: Int) {
-        mediaplayer!!.seekTo(time.toLong())
+        mediaplayer.seekTo(time.toLong())
     }
 
     fun getPlayUrl(): String {
@@ -94,7 +94,7 @@ class IjkPlayerUtil {
     }
 
     fun isPlaying(): Boolean {
-        return mediaplayer!!.isPlaying
+        return mediaplayer.isPlaying
     }
 
     companion object {

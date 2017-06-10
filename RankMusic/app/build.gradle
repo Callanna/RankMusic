@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
@@ -48,9 +47,8 @@ dependencies {
     compile dependencies.kotlinStdlib
     compile dependencies.kotlinReflect
 
-    compile "org.jetbrains.anko:anko-common:$anko_version"
-    compile "org.jetbrains.anko:anko-sqlite:$anko_version"
-
+    compile dependencies.ankoCommon
+    compile dependencies.ankoSqlite
 
     //Rxandroid
     compile dependencies.rxJava

@@ -43,7 +43,7 @@ class LineScaleIndicator : Indicator() {
             addUpdateListener(scaleAnim, ValueAnimator.AnimatorUpdateListener { animation ->
                 scaleYFloats[index] = animation.animatedValue as Float
                // invalidateSelf()
-                postInvalidate()
+                //postInvalidate()
             })
             animators.add(scaleAnim)
         }

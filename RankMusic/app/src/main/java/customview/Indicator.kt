@@ -26,6 +26,7 @@ abstract class Indicator : Drawable(), Animatable {
         mPaint.color = Color.WHITE
         mPaint.style = Paint.Style.FILL
         mPaint.isAntiAlias = true
+        mPaint.isDither = true
     }
 
     var color: Int

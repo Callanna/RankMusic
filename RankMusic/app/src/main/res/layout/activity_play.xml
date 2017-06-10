@@ -49,7 +49,7 @@
              android:layout_height="100dp">
              <SeekBar
                  android:id="@+id/seekbar_song"
-                 android:progress="10"
+                 android:progress="0"
                  android:layout_alignParentTop="true"
                  android:layout_width="match_parent"
                  android:layout_height="wrap_content" />

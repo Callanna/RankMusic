@@ -86,11 +86,10 @@ class LoadingIndicatorView : View {
     }
 
     private fun init(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) {
-        mMinWidth = 24
-        mMaxWidth = 48
-        mMinHeight = 24
-        mMaxHeight = 48
-
+        mMinWidth = 30
+        mMaxWidth = 80
+        mMinHeight = 30
+        mMaxHeight = 60
         val a = context.obtainStyledAttributes(
                 attrs, R.styleable.LoadingIndicatorView, defStyleAttr, defStyleRes)
 
