@@ -47,6 +47,11 @@ dependencies {
     //kotlin
     compile dependencies.kotlinStdlib
     compile dependencies.kotlinReflect
+
+    compile "org.jetbrains.anko:anko-common:$anko_version"
+    compile "org.jetbrains.anko:anko-sqlite:$anko_version"
+
+
     //Rxandroid
     compile dependencies.rxJava
     compile dependencies.rxAndroid

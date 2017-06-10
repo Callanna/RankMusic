@@ -14,8 +14,6 @@ class MediaPlayerUtil {
     private lateinit var mUrl: String
     lateinit var playStateChange: PlayStateChangeListener
 
-
-
     init {
         mediaplayer = MediaPlayer()
         mediaplayer.setOnErrorListener({ mp, what, extra ->
