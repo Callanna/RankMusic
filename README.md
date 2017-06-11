@@ -39,11 +39,11 @@ RankMusic音乐排行榜 一个使用kotlin 语言开发的android项目。
 小伙伴们肯定暗下决心立志要学好Kotlin。尽管学习资源少，
 但找找还是有的，比如最权威的官方网站： Kotlin 官网 。还有一些学习资料：
 
-*[Kotlin 中文文档](https://link.juejin.im/?target=https%3A%2F%2Fkotlinlang.org%2F)
+* [Kotlin 中文文档](https://link.juejin.im/?target=https%3A%2F%2Fkotlinlang.org%2F)
 
-*[《Kotlin for android Developers》中文翻译在线阅读或下载GitBook](https://www.gitbook.com/book/wangjiegulu/kotlin-for-android-developers-zh/details)
+* [《Kotlin for android Developers》中文翻译在线阅读或下载GitBook](https://www.gitbook.com/book/wangjiegulu/kotlin-for-android-developers-zh/details)
 
-*[Kotlin教学视频（百度云）](http://pan.baidu.com/s/1nvGYAfB)
+* [Kotlin教学视频（百度云）](http://pan.baidu.com/s/1nvGYAfB)
 
 可是学习的资源有了，可供参考的项目也少。 兴致勃勃的学习了之后，发现很难用到实际生产中。
 而本项目旨在提供大家一个参考，看看如何使用Kotlin语言结合当下最流行的开发模式和框架。
