@@ -17,23 +17,16 @@ RankMusic音乐排行榜 一个使用kotlin 语言开发的android项目。
 
 ## anko-Sqlite
 
-好啦，让小伙伴们看看效果。
+RankMusic 1.2 版本更新
 
-![image](https://raw.githubusercontent.com/Callanna/RankMusic/master/art/mian.png)
+**哈哈，让小伙伴们看看屏幕适配效果。**  
 
-主页
+![image](https://raw.githubusercontent.com/Callanna/RankMusic/master/art/demo1.png)  
 
-![image](https://raw.githubusercontent.com/Callanna/RankMusic/master/art/play.png)
+ 
+**横屏，竖屏随意切换。**  
 
-播放页
-
-![image](https://raw.githubusercontent.com/Callanna/RankMusic/master/art/lrc.png)
-
-歌词页
-
-![image](https://raw.githubusercontent.com/Callanna/RankMusic/master/art/ezgif.com-video-to-gif.gif)
-
-歌曲切换
+![image](https://raw.githubusercontent.com/Callanna/RankMusic/master/art/demo2.png)  
 
 在Google将Kotlin作为Android官方开发语言以来,相信作为一个合格的Android开发工程师，
 小伙伴们肯定暗下决心立志要学好Kotlin。尽管学习资源少，
@@ -47,5 +40,15 @@ RankMusic音乐排行榜 一个使用kotlin 语言开发的android项目。
 
 可是学习的资源有了，可供参考的项目也少。 兴致勃勃的学习了之后，发现很难用到实际生产中。
 而本项目旨在提供大家一个参考，看看如何使用Kotlin语言结合当下最流行的开发模式和框架。
-目前项目是一个pad版的app,后续会实现多屏幕适配，此项目我会一直更新，
+
+### 该项目主要框架参考
+[GankClient-Kotlin](https://github.com/githubwing/GankClient-Kotlin)  
+ 
+呵呵在此感谢大神分享，纯干货。  
+
+
+嗯，现在项目处于初级开发阶段，有很多问题，希望大家包涵。  
+**<O-O>**  
+
+**问题点有很多，下一版本将解决**
 **欢迎大家多多评论留言，一起讨论学习。
