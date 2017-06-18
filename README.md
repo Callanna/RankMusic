@@ -17,16 +17,16 @@ RankMusic音乐排行榜 一个使用kotlin 语言开发的android项目。
 
 ## anko-Sqlite
 
-RankMusic 1.2 版本更新
+## RankMusic 1.2 版本更新
 
 **哈哈，让小伙伴们看看屏幕适配效果。**  
 
-![image](https://raw.githubusercontent.com/Callanna/RankMusic/master/art/demo1.png)  
+![image](https://github.com/Callanna/RankMusic/blob/master/art/demo1.gif)  
 
  
 **横屏，竖屏随意切换。**  
 
-![image](https://raw.githubusercontent.com/Callanna/RankMusic/master/art/demo2.png)  
+![image](https://github.com/Callanna/RankMusic/blob/master/art/demo1.gif)  
 
 在Google将Kotlin作为Android官方开发语言以来,相信作为一个合格的Android开发工程师，
 小伙伴们肯定暗下决心立志要学好Kotlin。尽管学习资源少，
