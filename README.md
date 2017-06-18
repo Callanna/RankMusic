@@ -21,7 +21,7 @@ RankMusic音乐排行榜 一个使用kotlin 语言开发的android项目。
 
 **哈哈，让小伙伴们看看屏幕适配效果。横屏，竖屏随意切换。**  
 
-![image](https://github.com/Callanna/RankMusic/blob/master/art/demo1.gif)![image](https://github.com/Callanna/RankMusic/blob/master/art/demo1.gif)  
+![image](https://github.com/Callanna/RankMusic/blob/master/art/demo1.gif)     ![image](https://github.com/Callanna/RankMusic/blob/master/art/demo2.gif)  
 
 在Google将Kotlin作为Android官方开发语言以来,相信作为一个合格的Android开发工程师，
 小伙伴们肯定暗下决心立志要学好Kotlin。尽管学习资源少，
