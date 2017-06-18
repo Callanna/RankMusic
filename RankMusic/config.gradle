@@ -62,5 +62,7 @@ ext {
             kotlinStdlib            : "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
             kotlinReflect           : "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion",
 
+            autolayout              :'com.zhy:autolayout:1.4.5',
+
     ]
 }

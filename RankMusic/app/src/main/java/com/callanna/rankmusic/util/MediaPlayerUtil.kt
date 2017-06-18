@@ -11,7 +11,7 @@ class MediaPlayerUtil {
     protected lateinit var mediaplayer: MediaPlayer
     protected lateinit var mTimer: Timer
     protected lateinit var timetask: TimerTask
-    private lateinit var mUrl: String
+    private   var mUrl = ""
     lateinit var playStateChange: PlayStateChangeListener
 
     init {

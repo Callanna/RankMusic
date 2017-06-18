@@ -22,8 +22,19 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".ui.activity.PlayActivity">
+        </activity>
 
-            android:name=".ui.activity.PlayActivity"></activity>
+
+
+
+        <!--ui设计图-->
+        <meta-data
+            android:name="design_width"
+            android:value="600"></meta-data>
+        <meta-data
+            android:name="design_height"
+            android:value="1024"></meta-data>
     </application>
 
 </manifest>

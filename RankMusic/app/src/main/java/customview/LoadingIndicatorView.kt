@@ -7,9 +7,7 @@ import android.graphics.Color
 import android.graphics.drawable.Animatable
 import android.graphics.drawable.Drawable
 import android.os.Build
-import android.text.TextUtils
 import android.util.AttributeSet
-import android.util.Log
 import android.view.View
 import android.view.animation.AnimationUtils
 import com.callanna.rankmusic.R
@@ -97,9 +95,7 @@ class LoadingIndicatorView : View {
         mMaxWidth = a.getDimensionPixelSize(R.styleable.LoadingIndicatorView_maxWidth, mMaxWidth)
         mMinHeight = a.getDimensionPixelSize(R.styleable.LoadingIndicatorView_minHeight, mMinHeight)
         mMaxHeight = a.getDimensionPixelSize(R.styleable.LoadingIndicatorView_maxHeight, mMaxHeight)
-        val indicatorName = a.getString(R.styleable.LoadingIndicatorView_indicatorName)
         mIndicatorColor = a.getColor(R.styleable.LoadingIndicatorView_indicatorColor, Color.WHITE)
-        setIndicator(indicatorName)
         if (indicator == null) {
             indicator = DEFAULT_INDICATOR
         }
@@ -123,42 +119,6 @@ class LoadingIndicatorView : View {
         this.mIndicatorColor = color
         indicator!!.color = color
     }
-
-
-    /**
-     * You should pay attention to pass this parameter with two way:
-     * for example:
-     * 1. Only class Name,like "SimpleIndicator".(This way would use default package name with
-     * "com.wang.avi.indicators")
-     * 2. Class name with full package,like "com.my.android.indicators.SimpleIndicator".
-     * @param indicatorName the class must be extend Indicator .
-     */
-    fun setIndicator(indicatorName: String) {
-        if (TextUtils.isEmpty(indicatorName)) {
-            return
-        }
-        val drawableClassName = StringBuilder()
-        if (!indicatorName.contains(".")) {
-            val defaultPackageName = javaClass.`package`.name
-            drawableClassName.append(defaultPackageName)
-                    .append(".indicators")
-                    .append(".")
-        }
-        drawableClassName.append(indicatorName)
-        try {
-            val drawableClass = Class.forName(drawableClassName.toString())
-            var indicator = drawableClass.newInstance() as Indicator
-            this.indicator = indicator
-        } catch (e: ClassNotFoundException) {
-            Log.e(TAG, "Didn't find your class , check the name again !")
-        } catch (e: InstantiationException) {
-            e.printStackTrace()
-        } catch (e: IllegalAccessException) {
-            e.printStackTrace()
-        }
-
-    }
-
     fun smoothToShow() {
         startAnimation(AnimationUtils.loadAnimation(context, android.R.anim.fade_in))
         visibility = View.VISIBLE
@@ -298,7 +258,6 @@ class LoadingIndicatorView : View {
 
     @Synchronized override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        Log.d("duanyl","onDraw")
         drawTrack(canvas)
         postInvalidateDelayed(100)
     }

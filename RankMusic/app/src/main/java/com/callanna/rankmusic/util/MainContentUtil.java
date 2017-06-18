@@ -53,15 +53,6 @@ public class MainContentUtil {
         currentTag = fragment.getClass().getSimpleName();
         tagList.remove(currentTag);
         tagList.add(currentTag);
-        Fragment oldFragment = fragmentManager.findFragmentByTag(currentTag);
-        if (oldFragment != null) {
-            try {
-                fragmentManager.popBackStackImmediate(currentTag, 0);
-            } catch (Exception e) {
-                Log.e("MainContentUtil",e.getMessage());
-            }
-            return;
-        }
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.layout_content, fragment, currentTag);
         if (!TextUtils.isEmpty(currentTag) && flag) {
@@ -121,7 +112,7 @@ public class MainContentUtil {
      * 清空Fragment栈
      */
     public void clearAllFragment() {
-        fragmentManager.popBackStack(null,1);
+        fragmentManager.popBackStackImmediate(null,1);
         tagList.clear();
     }
 

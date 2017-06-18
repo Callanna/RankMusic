@@ -1,21 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
         <import type="android.view.View" />
     </data>
-    <LinearLayout
+
+    <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <customview.lrc.LrcView
             android:id="@+id/lrcview"
+            android:layout_width="600px"
+            android:layout_centerInParent="true"
+            android:layout_height="match_parent"
             app:lrcCurrentTextColor="@color/write"
             app:lrcDividerHeight="40dp"
-            app:lrcTextSize="32sp"
-            app:lrcPadding="20dp"
+            android:visibility="gone"
             app:lrcNormalTextColor="@color/tr_write_half"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
+            app:lrcPadding="20dp"
+            app:lrcTextSize="32sp" />
+
+        <ImageView
+            android:id="@+id/imvLrcSong"
+            android:layout_width="400px"
+            android:layout_height="400px"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="20dp"
+            android:transitionName="img"  />
+    </com.zhy.autolayout.AutoRelativeLayout>
 </layout>
 

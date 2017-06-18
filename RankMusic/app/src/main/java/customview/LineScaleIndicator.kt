@@ -4,7 +4,6 @@ import android.animation.ValueAnimator
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.RectF
-import android.util.Log
 import java.util.*
 
 /**
@@ -16,7 +15,6 @@ class LineScaleIndicator : Indicator() {
     internal var scaleYFloats = floatArrayOf(SCALE, SCALE, SCALE, SCALE, SCALE)
 
     override fun draw(canvas: Canvas, paint: Paint) {
-        Log.d("duanyl","draw")
         paint.isAntiAlias = true
         val translateX = (width / 11).toFloat()
         val translateY = (height / 2).toFloat()

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="type"
+            type="String" />
+        <variable
+            name="song"
+            type="com.callanna.rankmusic.bean.Music" />
+    </data>
+     <com.zhy.autolayout.AutoRelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="match_parent">
+         <ImageView
+             app:load_imageblur="@{song.albumpic_big}"
+             android:scaleType="fitXY"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent" />
+         <android.support.v7.widget.Toolbar
+             android:id="@+id/toolbar"
+             android:layout_marginTop="20px"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             >
+
+             <TextView
+                 android:id="@+id/tv_title"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:gravity="center"
+                 app:load_type="@{type}"
+                 android:textColor="@color/write"
+                 android:textSize="28px" />
+         </android.support.v7.widget.Toolbar>
+         <LinearLayout
+             android:orientation="vertical"
+             android:weightSum="1"
+             android:layout_below="@+id/toolbar"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+             <FrameLayout
+                 android:id="@+id/layout_content"
+                 android:layout_above="@+id/bottom"
+                 android:layout_below="@+id/toolbar"
+                 android:layout_width="match_parent"
+                 android:layout_weight="0.65"
+                 android:layout_height="0dp">
+
+             </FrameLayout>
+             <RelativeLayout
+                 android:id="@+id/bottom"
+                 android:layout_alignParentBottom="true"
+                 android:layout_width="match_parent"
+                 android:layout_weight="0.35"
+                 android:layout_height="0dp">
+                 <LinearLayout
+                     android:id="@+id/lay_seekbar"
+                     android:gravity="center_vertical"
+                     android:orientation="horizontal"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content">
+                     <TextView
+                         android:id="@+id/tv_song_currenttime"
+                         android:layout_alignBottom="@+id/imv_song"
+                         android:layout_toRightOf="@+id/imv_song"
+                         android:textColor="@color/write"
+                         android:text="00:00"
+                         android:textSize="14px"
+                         android:layout_weight="0.5"
+                         android:gravity="center"
+                         android:layout_width="wrap_content"
+                         android:layout_height="50px" />
+                     <SeekBar
+                         android:id="@+id/seekbar_song"
+                         android:progress="0"
+                         android:layout_alignParentTop="true"
+                         android:layout_width="0dp"
+                         android:layout_weight="9"
+                         android:layout_height="wrap_content" />
+                     <TextView
+                         android:id="@+id/tv_song_totalttime"
+                         android:layout_alignBottom="@+id/imv_song"
+                         android:layout_toRightOf="@+id/imv_song"
+                         android:textColor="@color/write"
+                         android:text="00:00"
+                         android:textSize="14px"
+                         android:layout_weight="0.5"
+                         android:gravity="center"
+                         android:layout_width="wrap_content"
+                         android:layout_height="40px" />
+                 </LinearLayout>
+                 <TextView
+                     android:id="@+id/tv_song_singer"
+                     android:layout_below="@+id/lay_seekbar"
+                     android:text="@{song.songname+' '+ '-'+' '+song.singername}"
+                     android:textSize="18sp"
+                     android:textColor="@color/write"
+                     android:gravity="center"
+                     android:layout_width="match_parent"
+                     android:layout_height="50dp" />
+                 <RelativeLayout
+                     android:paddingLeft="10dp"
+                     android:paddingRight="20dp"
+                     android:layout_centerInParent="true"
+                     android:layout_width="match_parent"
+                     android:layout_height="80dp">
+
+
+                     <Button
+                         android:id="@+id/btn_play"
+                         android:layout_centerInParent="true"
+                         android:background="@mipmap/ic_stop"
+                         android:layout_marginLeft="40dp"
+                         android:layout_marginRight="40dp"
+                         android:layout_width="48px"
+                         android:layout_height="48px" />
+                     <Button
+                         android:id="@+id/btn_next"
+                         android:layout_centerVertical="true"
+                         android:background="@mipmap/ic_next"
+                         android:layout_toRightOf="@+id/btn_play"
+                         android:layout_width="40px"
+                         android:layout_height="40px" />
+
+                     <Button
+                         android:id="@+id/btn_pre"
+                         android:layout_centerVertical="true"
+                         android:background="@mipmap/ic_pre"
+                         android:layout_toLeftOf="@+id/btn_play"
+                         android:layout_width="40px"
+                         android:layout_height="40px" />
+
+                     <ImageView
+                         android:id="@+id/imv_playmode"
+                         android:layout_marginRight="40px"
+                         android:layout_centerVertical="true"
+                         android:background="@mipmap/ic_cycle"
+                         android:layout_toLeftOf="@+id/btn_pre"
+                         android:layout_width="42px"
+                         android:layout_height="42px" />
+                     <CheckBox
+                         android:id="@+id/cb_word"
+                         android:layout_marginLeft="40px"
+                         android:layout_centerVertical="true"
+                         android:button="@null"
+                         android:checked="true"
+                         android:background="@drawable/cb_songword_selector"
+                         android:layout_toRightOf="@+id/btn_next"
+                         android:layout_width="42px"
+                         android:layout_height="42px" />
+                 </RelativeLayout>
+                 <LinearLayout
+                     android:layout_alignParentBottom="true"
+                     android:layout_marginBottom="20px"
+                     android:gravity="center_horizontal"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content">
+                     <CheckBox
+                         android:id="@+id/cb_voice"
+                         android:layout_marginLeft="10dp"
+                         android:layout_centerVertical="true"
+                         android:button="@null"
+                         android:background="@drawable/cb_voice_selector"
+                         android:layout_toRightOf="@+id/btn_next"
+                         android:layout_width="32px"
+                         android:layout_height="32px" />
+                     <SeekBar
+                         android:id="@+id/seekbar_voice"
+                         android:layout_centerVertical="true"
+                         android:layout_toRightOf="@+id/cb_voice"
+                         android:layout_width="300px"
+                         android:layout_height="wrap_content" />
+                 </LinearLayout>
+             </RelativeLayout>
+         </LinearLayout>
+
+
+     </com.zhy.autolayout.AutoRelativeLayout>
+</layout>

@@ -44,7 +44,7 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>(),MainContract.Vie
         return DataBindingUtil.setContentView(this, R.layout.activity_main)
     }
 
-    override fun initView() {
+    override fun initView(savedInstanceState: Bundle?) {
         getMainComponent().plus(MainMusicModule(this)).inject(this)
         mAdapterHot = MusicMainListAdapter(mListHot)
         mAdapterKorea = MusicMainListAdapter(mListKorea)
@@ -56,27 +56,27 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>(),MainContract.Vie
             listHot.adapter = mAdapterHot
             listHot.layoutManager =LinearLayoutManager(context)
             mAdapterHot.setOnItemClickListener { pos ->
-                PlayActivity.startActivity(context,Constants.HOT_SONG,pos)
+                PlayActivity.startActivity(context,Constants.HOT_SONG,pos,listHot)
             }
             listKorea.adapter = mAdapterKorea
             listKorea.layoutManager =LinearLayoutManager(context)
             mAdapterKorea.setOnItemClickListener { pos ->
-                PlayActivity.startActivity(context,Constants.KOREA,pos)
+                PlayActivity.startActivity(context,Constants.KOREA,pos,listKorea)
             }
             listLocal.adapter = mAdapterLocal
             listLocal.layoutManager =LinearLayoutManager(context)
             mAdapterLocal.setOnItemClickListener { pos ->
-                PlayActivity.startActivity(context,Constants.LOCAL,pos)
+                PlayActivity.startActivity(context,Constants.LOCAL,pos,listLocal)
             }
             listRock.adapter = mAdapterRock
             listRock.layoutManager =LinearLayoutManager(context)
             mAdapterRock.setOnItemClickListener { pos ->
-                PlayActivity.startActivity(context,Constants.ROCK,pos)
+                PlayActivity.startActivity(context,Constants.ROCK,pos,listRock)
             }
             list_uk.adapter = mAdapterUK
             list_uk.layoutManager =LinearLayoutManager(context)
             mAdapterUK.setOnItemClickListener { pos ->
-                PlayActivity.startActivity(context,Constants.UK,pos)
+                PlayActivity.startActivity(context,Constants.UK,pos,list_uk)
             }
         }
 
@@ -154,7 +154,8 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>(),MainContract.Vie
 
     override fun onDestroy() {
         super.onDestroy()
-
+        mPresenter.unSubscribe()
+        mBinding.unbind()
     }
 
 

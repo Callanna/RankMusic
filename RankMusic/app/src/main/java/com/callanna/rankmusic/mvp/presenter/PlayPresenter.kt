@@ -19,6 +19,7 @@ class PlayPresenter
 @Inject constructor(private val mModel: MainModel,
                     private val mView: PlayContract.View): PlayContract.Presenter, BasePresenter() {
 
+
     private val songlist:ArrayList<Music> = ArrayList()
     private var currentPosition:Int = 0
     private var currentMode:Int = Constants.MODE_ORDER
@@ -57,8 +58,10 @@ class PlayPresenter
         }
     }
     override fun play(position: Int,url: String) {
-        mView.setCurrentSong(songlist[position])
-        currentPosition = position
+        Log.d("duanyl","url  + :"+url + "pos :"+position)
+        if(songlist.size <= position){
+            return
+        }
         if( url.equals("")) {
             MediaPlayerUtil.instance.play(songlist[position].url)
         }else{
@@ -67,6 +70,8 @@ class PlayPresenter
         getSongLrc(songlist[position].songid.toString())
         App.instance.currentType = currentType
         App.instance.currentSong= songlist[position]
+        mView.setCurrentSong(songlist[position])
+        App.instance.currentPosition = position
     }
     override fun seekTo(time:Int) {
         MediaPlayerUtil.instance.seekTo(time * 1000)
@@ -78,6 +83,7 @@ class PlayPresenter
                 .subscribe({
                     res ->
                     songlist.addAll(res)
+                    Log.d("duanyl","duanyl=====>songlist ")
                     mView.setSongList(res)
                 }, { e -> Log.e("duanyl", "error MainMusic:" + e.message) }))
     }
@@ -127,6 +133,13 @@ class PlayPresenter
 
     override fun setMode(mode: Int) {
          currentMode = mode
+         mView.setMode(currentMode)
     }
-
+    override fun changeMode() {
+         currentMode++
+        if(currentMode > 2){
+            currentMode = 0
+        }
+        setMode(currentMode)
+    }
 }

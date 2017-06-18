@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <LinearLayout
+    <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
          <android.support.v7.widget.RecyclerView
-             android:id="@+id/recyclerview_music"
+             android:id="@+id/recyclerviewMusicList"
              android:layout_width="match_parent"
              android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
-    </LinearLayout>
+    </com.zhy.autolayout.AutoRelativeLayout>
 </layout>

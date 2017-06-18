@@ -18,8 +18,8 @@ android {
         applicationId "com.callanna.rankmusic"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -69,6 +69,8 @@ dependencies {
     provided dependencies.javaxAnnotation
 
     kapt dependencies.databindcompiler
+
+    compile dependencies.autolayout
 
     compile(name: 'ijkplayer', ext: 'aar')
 

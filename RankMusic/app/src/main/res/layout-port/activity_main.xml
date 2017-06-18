@@ -14,7 +14,7 @@
         android:background="@drawable/main_bg"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        android:paddingTop="30px"
+        android:paddingTop="10px"
         tools:context="com.callanna.rankmusic.ui.activity.MainActivity">
 
         <LinearLayout
@@ -25,7 +25,7 @@
             android:layout_marginBottom="10px"
             android:layout_marginLeft="40px"
             android:layout_marginRight="40px"
-            android:layout_marginTop="10px"
+            android:layout_marginTop="40px"
             android:background="@drawable/search_bg"
             android:gravity="center_vertical"
             android:orientation="horizontal"
@@ -50,7 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/top"
-            android:padding="20px"
+            android:padding="10px"
             android:scrollX="120px">
 
             <LinearLayout
@@ -95,7 +95,7 @@
                         android:id="@+id/list_hot"
                         android:layout_width="0px"
                         android:layout_height="match_parent"
-                        android:layout_marginBottom="2px"
+                        android:layout_marginBottom="3px"
                         android:layout_marginTop="2px"
                         android:layout_weight="0.7">
 

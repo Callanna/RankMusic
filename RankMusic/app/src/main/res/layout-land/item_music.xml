@@ -21,6 +21,7 @@
             android:gravity="top"
             android:textColor="@color/write"
             android:layout_marginRight="20px"
+            android:layout_marginLeft="20px"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:textSize="28px"

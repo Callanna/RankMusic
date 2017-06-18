@@ -21,7 +21,9 @@ class App : Application() {
 
     val handler:Handler =  Handler()
     var currentType:String = ""
-    lateinit var currentSong: Music
+    var currentSong: Music ?= null
+    var currentPosition:Int = 0
+
     override fun onCreate() {
         super.onCreate()
         DaggerApiComponent.builder().apiModule(ApiModule()).appModule(AppModule(this)).build().inject(this)

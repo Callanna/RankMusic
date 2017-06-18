@@ -15,11 +15,14 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
+
 import com.callanna.rankmusic.R;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 import static com.callanna.rankmusic.util.DensityUtils.dp2px;
 import static com.callanna.rankmusic.util.DensityUtils.sp2px;
 
@@ -58,7 +61,7 @@ public class LrcView extends View {
 
     private void init(AttributeSet attrs) {
         TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.LrcView);
-        mTextSize = ta.getDimension(R.styleable.LrcView_lrcTextSize,  sp2px(getContext(), 12));
+        mTextSize = ta.getDimension(R.styleable.LrcView_lrcTextSize, sp2px(getContext(), 12));
         mDividerHeight = ta.getDimension(R.styleable.LrcView_lrcDividerHeight, dp2px(getContext(), 16));
         mAnimationDuration = ta.getInt(R.styleable.LrcView_lrcAnimationDuration, 1000);
         mAnimationDuration = (mAnimationDuration < 0) ? 1000 : mAnimationDuration;
@@ -328,7 +331,9 @@ public class LrcView extends View {
      */
     private void newlineAnimation(int index) {
         stopAnimation();
-
+        if (mLrcEntryList.get(index) == null && mLrcEntryList.get(index).getStaticLayout() == null) {
+            return;
+        }
         mAnimator = ValueAnimator.ofFloat(mLrcEntryList.get(index).getTextHeight() + mDividerHeight, 0.0f);
         mAnimator.setDuration(mAnimationDuration * mLrcEntryList.get(index).getStaticLayout().getLineCount());
         mAnimator.setInterpolator(new LinearInterpolator());

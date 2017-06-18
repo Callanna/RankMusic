@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -12,27 +12,27 @@
 
     <com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="80px">
+        android:layout_height="100px">
 
         <TextView
             android:id="@+id/tv_rank"
             android:layout_centerVertical="true"
-            android:layout_width="wrap_content"
-            android:gravity="top"
-            android:textColor="@color/write"
-            android:layout_marginRight="20px"
+            android:layout_width="60px"
+            android:paddingBottom="20px"
+            android:gravity="center"
+            android:textSize="24px"
+            android:layout_marginRight="30px"
+            android:textColor="@color/tr_write_half"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
-            android:textSize="28px"
-            android:textStyle="bold"
             android:text="1" />
 
         <TextView
             android:id="@+id/tv_songname"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="70px"
             android:textSize="24px"
-            android:textColor="@color/write"
+            android:textColor="@color/tr_write_half"
             android:gravity="center_vertical|left"
             android:layout_toRightOf="@+id/tv_rank"
             android:text="@{song.songname}" />
@@ -41,12 +41,21 @@
             android:id="@+id/tv_singer"
             android:gravity="center_vertical|left"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="30px"
             android:textSize="18px"
             android:textColor="@color/write_half"
             android:layout_below="@+id/tv_songname"
             android:layout_toRightOf="@+id/tv_rank"
             android:text="@{song.singername}" />
+        <customview.LoadingIndicatorView
+            android:id="@+id/loading"
+            android:layout_width="60px"
+            android:layout_height="40px"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20px"
+            app:indicatorName="LineScaleIndicator"
+            />
     </com.zhy.autolayout.AutoRelativeLayout>
 
 </layout>

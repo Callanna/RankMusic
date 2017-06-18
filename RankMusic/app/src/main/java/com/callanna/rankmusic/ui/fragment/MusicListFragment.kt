@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.callanna.rankmusic.App
 import com.callanna.rankmusic.bean.Music
 import com.callanna.rankmusic.databinding.FragmentMusiclistBinding
 import com.callanna.rankmusic.mvp.presenter.PlayPresenter
 import com.callanna.rankmusic.ui.activity.base.BaseBingingFragment
 import com.callanna.rankmusic.ui.adapter.PlayMusicListAdapter
+import kotlinx.android.synthetic.main.fragment_musiclist.*
 import java.util.*
 
 /**
@@ -17,17 +19,17 @@ import java.util.*
 
 class MusicListFragment : BaseBingingFragment<FragmentMusiclistBinding>() {
     private var mList = ArrayList<Music>()
-    private lateinit var mAdapter: PlayMusicListAdapter
+    private var mAdapter = PlayMusicListAdapter(mList)
     private lateinit var playPresenter :PlayPresenter
     override fun createDataBinding(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): FragmentMusiclistBinding {
         return FragmentMusiclistBinding.inflate(inflater, container, false)
     }
 
     override fun initView() {
-        mAdapter = PlayMusicListAdapter(mList)
         with(mBinding!!){
-            recyclerviewMusic.adapter = mAdapter
-            recyclerviewMusic.layoutManager = LinearLayoutManager(context)
+            recyclerviewMusicList.adapter = mAdapter
+            recyclerviewMusicList.layoutManager = LinearLayoutManager(context)
+            mAdapter.notifyDataSetChanged()
             mAdapter.setOnItemClickListener {
                 pos ->
                 playPresenter.play(pos,"")
@@ -40,13 +42,18 @@ class MusicListFragment : BaseBingingFragment<FragmentMusiclistBinding>() {
     }
 
     fun setData(results: List<Music>) {
+        mList.clear()
         mList.addAll(results)
         mAdapter.notifyDataSetChanged()
     }
 
     fun update(){
         mAdapter.notifyDataSetChanged()
+        if(recyclerviewMusicList != null) {
+            recyclerviewMusicList.smoothScrollToPosition(App.instance.currentPosition + 1)
+        }
     }
+
     companion object {
         fun newInstance(): MusicListFragment {
             val fragment = MusicListFragment()

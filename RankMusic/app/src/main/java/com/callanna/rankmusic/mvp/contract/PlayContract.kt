@@ -33,5 +33,6 @@ interface PlayContract{
         fun next()
         fun pre()
         fun setMode(mode:Int)
+        fun changeMode()
     }
 }
