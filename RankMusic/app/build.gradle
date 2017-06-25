@@ -74,6 +74,9 @@ dependencies {
 
     compile(name: 'ijkplayer', ext: 'aar')
 
+    compile 'com.android.support:support-v4:25.3.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
+    compile 'zlc.season:rxdownload2:2.0.2'
 }
 
 kapt {

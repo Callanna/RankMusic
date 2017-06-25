@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="song"
+            type="com.callanna.rankmusic.bean.Music" />
+    </data>
+
+    <com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="100px">
+        <TextView
+            android:id="@+id/tv_songname"
+            android:layout_width="wrap_content"
+            android:layout_height="70px"
+            android:textSize="24px"
+            android:textColor="@color/tr_write_half"
+            android:gravity="center_vertical|left"
+            android:layout_toRightOf="@+id/tv_rank"
+            android:text="@{song.songname}" />
+
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_songname"
+            android:layout_toLeftOf="@+id/imv_cancle"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_gravity="center_vertical"
+            android:max="100"
+            android:progress="30"
+            android:secondaryProgress="100" />
+        <ImageView
+            android:id="@+id/imv_cancle"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="40px"
+            android:layout_width="64px"
+            android:layout_height="32px" />
+        <TextView
+            android:layout_below="@+id/imv_cancle"
+            android:layout_alignParentRight="true"
+            android:id="@+id/tv_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+</layout>

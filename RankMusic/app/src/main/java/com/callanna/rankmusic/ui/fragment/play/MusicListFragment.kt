@@ -1,4 +1,4 @@
-package com.callanna.rankmusic.ui.fragment
+package com.callanna.rankmusic.ui.fragment.play
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -20,7 +20,7 @@ import java.util.*
 class MusicListFragment : BaseBingingFragment<FragmentMusiclistBinding>() {
     private var mList = ArrayList<Music>()
     private var mAdapter = PlayMusicListAdapter(mList)
-    private lateinit var playPresenter :PlayPresenter
+    private lateinit var playPresenter : PlayPresenter
     override fun createDataBinding(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): FragmentMusiclistBinding {
         return FragmentMusiclistBinding.inflate(inflater, container, false)
     }
@@ -37,7 +37,7 @@ class MusicListFragment : BaseBingingFragment<FragmentMusiclistBinding>() {
             }
         }
     }
-    fun setPresenter(playpresenter :PlayPresenter){
+    fun setPresenter(playpresenter : PlayPresenter){
         playPresenter = playpresenter
     }
 
@@ -49,8 +49,8 @@ class MusicListFragment : BaseBingingFragment<FragmentMusiclistBinding>() {
 
     fun update(){
         mAdapter.notifyDataSetChanged()
-        if(recyclerviewMusicList != null) {
-            recyclerviewMusicList.smoothScrollToPosition(App.instance.currentPosition + 1)
+        if(kotlinx.android.synthetic.main.fragment_musiclist.recyclerviewMusicList != null) {
+            kotlinx.android.synthetic.main.fragment_musiclist.recyclerviewMusicList.smoothScrollToPosition(App.instance.currentPosition + 1)
         }
     }
 

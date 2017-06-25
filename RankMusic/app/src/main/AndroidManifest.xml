@@ -3,7 +3,8 @@
     package="com.callanna.rankmusic">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS"></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -12,29 +13,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity
-            android:name=".ui.activity.MainActivity"
-            >
+        <activity android:name=".ui.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.activity.PlayActivity">
-        </activity>
+        <activity android:name=".ui.activity.PlayActivity"></activity>
 
-
-
-
-        <!--ui设计图-->
+        <!-- ui设计图 -->
         <meta-data
             android:name="design_width"
-            android:value="600"></meta-data>
+            android:value="600" />
         <meta-data
             android:name="design_height"
-            android:value="1024"></meta-data>
+            android:value="1024" />
+
+        <activity android:name=".ui.activity.ListActivity"></activity>
     </application>
 
 </manifest>

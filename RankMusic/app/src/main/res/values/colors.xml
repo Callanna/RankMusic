@@ -11,4 +11,5 @@
     <color name="tr_oragle_half">#660073B0</color>
     <color name="write_half">#88ffffff</color>
     <color name="write">#ffffff</color>
+    <color name="tr_write_half2" >#333c3c3c</color>
 </resources>

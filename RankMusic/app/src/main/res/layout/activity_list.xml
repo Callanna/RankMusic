@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View" />
+    </data>
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:background="@color/tr_gray_half"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_marginTop="20px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:load_type="@{type}"
+            android:textColor="@color/write"
+            android:textSize="28px" />
+    </android.support.v7.widget.Toolbar>
+    <FrameLayout
+        android:id="@+id/layout_list"
+        android:layout_above="@+id/bottom"
+        android:layout_below="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_weight="0.65"
+        android:layout_height="0dp">
+
+    </FrameLayout>
+    </com.zhy.autolayout.AutoRelativeLayout>
+</layout>

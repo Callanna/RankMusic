@@ -8,6 +8,17 @@
         <attr name="indicatorName" format="string"/>
         <attr name="indicatorColor" format="color"/>
     </declare-styleable>
+    <declare-styleable name="CustomIndicator">
+        <attr name="radius" format="dimension" />
+
+        <attr name="fillColor" format="color" />
+
+        <attr name="strokeColor" format="color" />
+
+        <attr name="shape" format="string" />
+    </declare-styleable>
+
+
     <declare-styleable name="LrcView">
         <attr name="lrcTextSize" format="dimension" />
         <attr name="lrcDividerHeight" format="dimension" />

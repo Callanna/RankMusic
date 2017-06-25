@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View"></import>
+    </data>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/main_bg"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/layout_login"
+            android:layout_width="200px"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:background="@drawable/layout_bg"
+            android:gravity="center_vertical"
+            android:padding="20dp">
+
+            <ImageView
+                android:id="@+id/imv_head"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/user" />
+
+            <Button
+                android:id="@+id/btn_login"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:layout_margin="20px"
+                android:layout_below="@+id/imv_head"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/layout_bg"
+                android:text="@string/login"
+                android:textColor="@color/write_half"
+                android:textSize="22px" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layouttop"
+            android:layout_width="match_parent"
+            android:layout_toRightOf="@+id/layout_login"
+            android:layout_height="250px"
+            android:layout_margin="10dp"
+            android:background="@drawable/layout_bg"
+            android:gravity="center_vertical"
+            android:paddingTop="20dp"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:paddingBottom="20dp"
+            >
+            <Button
+                android:id="@+id/imv_localmusic"
+                android:textColor="@color/write"
+                android:text="@string/localmusic"
+                android:background="@null"
+                android:drawablePadding="10dp"
+                android:textSize="22sp"
+                android:drawableTop="@drawable/music"
+                android:layout_alignParentLeft="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/imv_downloadmusic"
+                android:textColor="@color/write"
+                android:text="@string/downloadmusic"
+                android:background="@null"
+                android:drawablePadding="10dp"
+                android:textSize="22sp"
+                android:drawableTop="@drawable/download"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/imv_historymusic"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/write"
+                android:text="@string/historymusic"
+                android:background="@null"
+                android:drawablePadding="10dp"
+                android:textSize="22sp"
+                android:drawableTop="@drawable/history"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"  />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_toRightOf="@+id/layout_login"
+            android:layout_below="@+id/layouttop"
+            android:background="@drawable/layout_bg"
+            android:padding="20dp"
+            >
+                <TextView
+                    android:textColor="@color/write"
+                    android:textSize="22sp"
+                    android:text="@string/my_songlist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            <RelativeLayout
+                android:background="@drawable/layout_bg"
+                android:layout_marginTop="40px"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="180px">
+                <ImageView
+                    android:layout_margin="20px"
+                    android:id="@+id/imv_love"
+                    android:src="@drawable/love"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:id="@+id/tv_love"
+                    android:textColor="@color/write"
+                    android:textSize="22sp"
+                    android:text="@string/my_lovesonglist"
+                    android:layout_marginTop="20px"
+                    android:layout_marginLeft="20px"
+                    android:layout_toRightOf="@+id/imv_love"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tv_lovecount"
+                    android:textColor="@color/write"
+                    android:textSize="22sp"
+                    android:text="0 首"
+                    android:layout_marginTop="10px"
+                    android:layout_marginLeft="20px"
+                    android:layout_below="@+id/tv_love"
+                    android:layout_toRightOf="@+id/imv_love"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <ImageView
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/next"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+</layout>

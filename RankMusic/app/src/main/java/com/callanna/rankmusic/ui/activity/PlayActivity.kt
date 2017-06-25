@@ -20,8 +20,8 @@ import com.callanna.rankmusic.db.MusicDBManager
 import com.callanna.rankmusic.mvp.contract.PlayContract
 import com.callanna.rankmusic.mvp.presenter.PlayPresenter
 import com.callanna.rankmusic.ui.activity.base.BaseBindingActivity
-import com.callanna.rankmusic.ui.fragment.LrcFragment
-import com.callanna.rankmusic.ui.fragment.MusicListFragment
+import com.callanna.rankmusic.ui.fragment.play.LrcFragment
+import com.callanna.rankmusic.ui.fragment.play.MusicListFragment
 import com.callanna.rankmusic.util.*
 import kotlinx.android.synthetic.main.activity_play.*
 import javax.inject.Inject
