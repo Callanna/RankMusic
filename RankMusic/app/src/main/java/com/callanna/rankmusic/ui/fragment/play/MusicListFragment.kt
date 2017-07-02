@@ -49,8 +49,8 @@ class MusicListFragment : BaseBingingFragment<FragmentMusiclistBinding>() {
 
     fun update(){
         mAdapter.notifyDataSetChanged()
-        if(kotlinx.android.synthetic.main.fragment_musiclist.recyclerviewMusicList != null) {
-            kotlinx.android.synthetic.main.fragment_musiclist.recyclerviewMusicList.smoothScrollToPosition(App.instance.currentPosition + 1)
+        if( recyclerviewMusicList != null) {
+           recyclerviewMusicList.smoothScrollToPosition(App.instance.currentPosition + 1)
         }
     }
 

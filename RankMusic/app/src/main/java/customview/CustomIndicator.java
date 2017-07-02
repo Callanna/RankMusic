@@ -68,7 +68,7 @@ public class CustomIndicator extends View implements ViewPager.OnPageChangeListe
         strokePaint.setAntiAlias(true);
         strokePaint.setStyle(Paint.Style.STROKE);
         strokePaint.setStrokeWidth((radius / 10) * 2);
-        calculatedRadius = (radius / 10) * 6;
+        calculatedRadius = (radius / 10) * 3;
         //size of inactive indicator
         constantRadius = calculatedRadius;
     }
@@ -125,33 +125,11 @@ public class CustomIndicator extends View implements ViewPager.OnPageChangeListe
             fillPaint.setColor(Color.parseColor("#ffffff"));
             canvas.drawLine(coordinateX - calculatedSize, coordinateY, coordinateX + calculatedSize, coordinateY, fillPaint);
         } else {
-            fillPaint.setColor(Color.TRANSPARENT);
+            fillPaint.setColor(strokeColor);
             canvas.drawCircle(coordinateX, coordinateY, calculatedSize, fillPaint);
-            canvas.drawCircle(coordinateX, coordinateY, calculatedSize, strokePaint);
         }
     }
 
-    public void drawIndicators(Canvas canvas, float coordinateX, float coordinateY, float calculatedSize) {
-
-        if (shape.equals(rectangle)) {
-            canvas.drawRect(
-                    coordinateX - (calculatedSize),
-                    coordinateY - (calculatedSize),
-                    coordinateX + (calculatedSize),
-                    coordinateY + (calculatedSize),
-                    fillPaint);
-            canvas.drawRect(
-                    coordinateX - (calculatedSize),
-                    coordinateY - (calculatedSize),
-                    coordinateX + (calculatedSize),
-                    coordinateY + (calculatedSize),
-                    strokePaint);
-        } else {
-            fillPaint.setColor(Color.TRANSPARENT);
-            canvas.drawCircle(coordinateX, coordinateY, calculatedSize, fillPaint);
-            canvas.drawCircle(coordinateX, coordinateY, calculatedSize, strokePaint);
-        }
-    }
 
     //to set new indicator active when viewpager flipped
     public void setActiveItem(int activeItem, float desiredRadius) {

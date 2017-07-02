@@ -1,111 +1,117 @@
 package com.callanna.rankmusic.ui.fragment.mian
 
+import android.support.v7.widget.LinearLayoutManager
 import com.callanna.rankmusic.bean.Music
+import com.callanna.rankmusic.dagger.compontent.MainMusicModule
 import com.callanna.rankmusic.databinding.FragmentHomeBinding
+import com.callanna.rankmusic.mvp.contract.MainContract
+import com.callanna.rankmusic.mvp.presenter.MainPresenter
+import com.callanna.rankmusic.ui.activity.PlayActivity
+import com.callanna.rankmusic.ui.activity.base.BaseBingingFragment
+import com.callanna.rankmusic.ui.adapter.MusicMainListAdapter
 import com.callanna.rankmusic.util.Constants
 import com.callanna.rankmusic.util.getMainComponent
 import kotlinx.android.synthetic.main.fragment_home.*
 
-class HomeFragment : com.callanna.rankmusic.ui.activity.base.BaseBingingFragment<FragmentHomeBinding>(), com.callanna.rankmusic.mvp.contract.MainContract.View {
+class HomeFragment : BaseBingingFragment<FragmentHomeBinding>(), MainContract.View {
 
     private var mListHot: java.util.ArrayList<Music> = java.util.ArrayList()
     private val mListRock: java.util.ArrayList<Music> = java.util.ArrayList()
     private val mListLocal: java.util.ArrayList<Music> = java.util.ArrayList()
     private val mListUK: java.util.ArrayList<Music> = java.util.ArrayList()
     private val mListKorea: java.util.ArrayList<Music> = java.util.ArrayList()
-    private lateinit var mAdapterHot: com.callanna.rankmusic.ui.adapter.MusicMainListAdapter
-    private lateinit var mAdapterRock: com.callanna.rankmusic.ui.adapter.MusicMainListAdapter
-    private lateinit var mAdapterLocal: com.callanna.rankmusic.ui.adapter.MusicMainListAdapter
-    private lateinit var mAdapterUK: com.callanna.rankmusic.ui.adapter.MusicMainListAdapter
-    private lateinit var mAdapterKorea: com.callanna.rankmusic.ui.adapter.MusicMainListAdapter
+    private lateinit var mAdapterHot:  MusicMainListAdapter
+    private lateinit var mAdapterRock:  MusicMainListAdapter
+    private lateinit var mAdapterLocal:  MusicMainListAdapter
+    private lateinit var mAdapterUK:  MusicMainListAdapter
+    private lateinit var mAdapterKorea:  MusicMainListAdapter
 
 
 
-    @javax.inject.Inject lateinit var mPresenter : com.callanna.rankmusic.mvp.presenter.MainPresenter
-
-    private var player: android.media.MediaPlayer = android.media.MediaPlayer()
+    @javax.inject.Inject lateinit var mPresenter : MainPresenter
 
     override fun createDataBinding(inflater: android.view.LayoutInflater?, container: android.view.ViewGroup?, savedInstanceState: android.os.Bundle?): com.callanna.rankmusic.databinding.FragmentHomeBinding {
-        return com.callanna.rankmusic.databinding.FragmentHomeBinding.inflate(inflater, container, false)
+        return FragmentHomeBinding.inflate(inflater, container, false)
     }
 
     override fun initView() {
-        context.getMainComponent().plus(com.callanna.rankmusic.dagger.compontent.MainMusicModule(this)).inject(this)
+        context.getMainComponent().plus(MainMusicModule(this)).inject(this)
 
-        mAdapterHot = com.callanna.rankmusic.ui.adapter.MusicMainListAdapter(mListHot)
-        mAdapterKorea = com.callanna.rankmusic.ui.adapter.MusicMainListAdapter(mListKorea)
-        mAdapterLocal = com.callanna.rankmusic.ui.adapter.MusicMainListAdapter(mListLocal)
-        mAdapterRock = com.callanna.rankmusic.ui.adapter.MusicMainListAdapter(mListRock)
-        mAdapterUK = com.callanna.rankmusic.ui.adapter.MusicMainListAdapter(mListUK)
+        mAdapterHot =  MusicMainListAdapter(mListHot)
+        mAdapterKorea =  MusicMainListAdapter(mListKorea)
+        mAdapterLocal =  MusicMainListAdapter(mListLocal)
+        mAdapterRock =  MusicMainListAdapter(mListRock)
+        mAdapterUK =  MusicMainListAdapter(mListUK)
 
         with(mBinding!!){
             listHot.adapter = mAdapterHot
-            listHot.layoutManager = android.support.v7.widget.LinearLayoutManager(context)
+            listHot.layoutManager =  LinearLayoutManager(context)
             mAdapterHot.setOnItemClickListener { pos ->
-                com.callanna.rankmusic.ui.activity.PlayActivity.Companion.startActivity(context, Constants.HOT_SONG, pos, listHot)
+                PlayActivity.startActivity(context, Constants.HOT_SONG, pos, listHot)
             }
             listKorea.adapter = mAdapterKorea
-            listKorea.layoutManager = android.support.v7.widget.LinearLayoutManager(context)
+            listKorea.layoutManager = LinearLayoutManager(context)
             mAdapterKorea.setOnItemClickListener { pos ->
-                com.callanna.rankmusic.ui.activity.PlayActivity.Companion.startActivity(context, Constants.KOREA, pos, listKorea)
+                PlayActivity.startActivity(context, Constants.KOREA, pos, listKorea)
             }
             listLocal.adapter = mAdapterLocal
-            listLocal.layoutManager = android.support.v7.widget.LinearLayoutManager(context)
+            listLocal.layoutManager =  LinearLayoutManager(context)
             mAdapterLocal.setOnItemClickListener { pos ->
-                com.callanna.rankmusic.ui.activity.PlayActivity.Companion.startActivity(context, Constants.LOCAL, pos, listLocal)
+                PlayActivity.startActivity(context, Constants.LOCAL, pos, listLocal)
             }
             listRock.adapter = mAdapterRock
-            listRock.layoutManager = android.support.v7.widget.LinearLayoutManager(context)
+            listRock.layoutManager =  LinearLayoutManager(context)
             mAdapterRock.setOnItemClickListener { pos ->
-                com.callanna.rankmusic.ui.activity.PlayActivity.Companion.startActivity(context, Constants.ROCK, pos, listRock)
+                PlayActivity.startActivity(context, Constants.ROCK, pos, listRock)
             }
-            kotlinx.android.synthetic.main.fragment_home.list_uk.adapter = mAdapterUK
-            kotlinx.android.synthetic.main.fragment_home.list_uk.layoutManager = android.support.v7.widget.LinearLayoutManager(context)
+            listUk.adapter = mAdapterUK
+            listUk.layoutManager = android.support.v7.widget.LinearLayoutManager(context)
             mAdapterUK.setOnItemClickListener { pos ->
-                com.callanna.rankmusic.ui.activity.PlayActivity.Companion.startActivity(context, Constants.UK, pos, list_uk)
+                PlayActivity.startActivity(context, Constants.UK, pos, list_uk)
+            }
+            layoutHot.setOnClickListener {
+                PlayActivity.startActivity(context, Constants.HOT_SONG, 0)
+            }
+            layoutUk.setOnClickListener {
+                PlayActivity.startActivity(context, Constants.UK, 0)
+            }
+            layoutLocal.setOnClickListener {
+                PlayActivity.startActivity(context, Constants.LOCAL, 0)
+            }
+            layoutKorea.setOnClickListener {
+                PlayActivity.startActivity(context, Constants.KOREA, 0)
+            }
+            layoutRock.setOnClickListener {
+                PlayActivity.startActivity(context, Constants.ROCK, 0)
+            }
+            imvSearch.setOnClickListener {
+                PlayActivity.searchByKey(context, et_search.text.toString())
             }
         }
 
         mPresenter.getData()
-        kotlinx.android.synthetic.main.fragment_home.layout_hot.setOnClickListener {
-            com.callanna.rankmusic.ui.activity.PlayActivity.Companion.startActivity(context, Constants.HOT_SONG, 0)
-        }
-        kotlinx.android.synthetic.main.fragment_home.layout_uk.setOnClickListener {
-            com.callanna.rankmusic.ui.activity.PlayActivity.Companion.startActivity(context, Constants.UK, 0)
-        }
-        kotlinx.android.synthetic.main.fragment_home.layout_local.setOnClickListener {
-            com.callanna.rankmusic.ui.activity.PlayActivity.Companion.startActivity(context, Constants.LOCAL, 0)
-        }
-        kotlinx.android.synthetic.main.fragment_home.layout_korea.setOnClickListener {
-            com.callanna.rankmusic.ui.activity.PlayActivity.Companion.startActivity(context, Constants.KOREA, 0)
-        }
-        kotlinx.android.synthetic.main.fragment_home.layout_rock.setOnClickListener {
-            com.callanna.rankmusic.ui.activity.PlayActivity.Companion.startActivity(context, Constants.ROCK, 0)
-        }
-        kotlinx.android.synthetic.main.fragment_home.imv_search.setOnClickListener {
-            com.callanna.rankmusic.ui.activity.PlayActivity.Companion.searchByKey(context, et_search.text.toString())
-        }
+
 
     }
 
     override fun onResume() {
         super.onResume()
-        kotlinx.android.synthetic.main.fragment_home.loading_hot.visibility = android.view.View.INVISIBLE
-        kotlinx.android.synthetic.main.fragment_home.loading_uk.visibility = android.view.View.INVISIBLE
-        kotlinx.android.synthetic.main.fragment_home.loading_local.visibility = android.view.View.INVISIBLE
-        kotlinx.android.synthetic.main.fragment_home.loading_rock.visibility = android.view.View.INVISIBLE
-        kotlinx.android.synthetic.main.fragment_home.loading_korea.visibility = android.view.View.INVISIBLE
+       loading_hot.visibility = android.view.View.INVISIBLE
+       loading_uk.visibility = android.view.View.INVISIBLE
+       loading_local.visibility = android.view.View.INVISIBLE
+       loading_rock.visibility = android.view.View.INVISIBLE
+       loading_korea.visibility = android.view.View.INVISIBLE
         when(com.callanna.rankmusic.App.Companion.playCurrentType){
-            com.callanna.rankmusic.util.Constants.Companion.HOT_SONG ->
-                kotlinx.android.synthetic.main.fragment_home.loading_hot.visibility = android.view.View.VISIBLE
-            com.callanna.rankmusic.util.Constants.Companion.UK ->
-                kotlinx.android.synthetic.main.fragment_home.loading_uk.visibility = android.view.View.VISIBLE
-            com.callanna.rankmusic.util.Constants.Companion.LOCAL ->
-                kotlinx.android.synthetic.main.fragment_home.loading_local.visibility = android.view.View.VISIBLE
-            com.callanna.rankmusic.util.Constants.Companion.ROCK ->
-                kotlinx.android.synthetic.main.fragment_home.loading_rock.visibility = android.view.View.VISIBLE
-            com.callanna.rankmusic.util.Constants.Companion.KOREA ->
-                kotlinx.android.synthetic.main.fragment_home.loading_korea.visibility = android.view.View.VISIBLE
+            Constants.HOT_SONG ->
+               loading_hot.visibility = android.view.View.VISIBLE
+            Constants.UK ->
+               loading_uk.visibility = android.view.View.VISIBLE
+            Constants.LOCAL ->
+               loading_local.visibility = android.view.View.VISIBLE
+            Constants.ROCK ->
+               loading_rock.visibility = android.view.View.VISIBLE
+            Constants.KOREA ->
+               loading_korea.visibility = android.view.View.VISIBLE
         }
     }
     override fun setHotSong(result: List<com.callanna.rankmusic.bean.Music>) {
@@ -146,8 +152,8 @@ class HomeFragment : com.callanna.rankmusic.ui.activity.base.BaseBingingFragment
 
 
     companion object {
-        fun newInstance(): com.callanna.rankmusic.ui.fragment.mian.HomeFragment {
-            val fragment = com.callanna.rankmusic.ui.fragment.mian.HomeFragment()
+        fun newInstance():  HomeFragment {
+            val fragment =  HomeFragment()
             val bundle = android.os.Bundle()
             fragment.arguments = bundle
             return fragment

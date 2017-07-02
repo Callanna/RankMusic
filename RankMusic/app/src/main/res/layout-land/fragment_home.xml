@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="30px"
-        android:background="@drawable/main_bg"
         tools:context="com.callanna.rankmusic.ui.activity.MainActivity">
 
         <LinearLayout

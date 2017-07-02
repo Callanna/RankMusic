@@ -11,7 +11,6 @@
     <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/main_bg"
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:paddingTop="30px"

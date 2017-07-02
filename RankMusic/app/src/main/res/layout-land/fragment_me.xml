@@ -18,22 +18,22 @@
             android:id="@+id/layout_login"
             android:layout_width="200px"
             android:layout_height="match_parent"
-            android:layout_margin="10dp"
+            android:layout_margin="10px"
             android:background="@drawable/layout_bg"
             android:gravity="center_vertical"
-            android:padding="20dp">
+            android:padding="20px">
 
             <ImageView
                 android:id="@+id/imv_head"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="100px"
+                android:layout_height="100px"
                 android:layout_centerInParent="true"
                 android:background="@drawable/user" />
 
             <Button
                 android:id="@+id/btn_login"
-                android:layout_width="100dp"
-                android:layout_height="60dp"
+                android:layout_width="100px"
+                android:layout_height="60px"
                 android:layout_margin="20px"
                 android:layout_below="@+id/imv_head"
                 android:layout_centerHorizontal="true"
@@ -48,21 +48,21 @@
             android:layout_width="match_parent"
             android:layout_toRightOf="@+id/layout_login"
             android:layout_height="250px"
-            android:layout_margin="10dp"
+            android:layout_margin="10px"
             android:background="@drawable/layout_bg"
             android:gravity="center_vertical"
-            android:paddingTop="20dp"
-            android:paddingLeft="50dp"
-            android:paddingRight="50dp"
-            android:paddingBottom="20dp"
+            android:paddingTop="20px"
+            android:paddingLeft="50px"
+            android:paddingRight="50px"
+            android:paddingBottom="20px"
             >
             <Button
                 android:id="@+id/imv_localmusic"
                 android:textColor="@color/write"
                 android:text="@string/localmusic"
                 android:background="@null"
-                android:drawablePadding="10dp"
-                android:textSize="22sp"
+                android:drawablePadding="10px"
+                android:textSize="22px"
                 android:drawableTop="@drawable/music"
                 android:layout_alignParentLeft="true"
                 android:layout_width="wrap_content"
@@ -72,8 +72,8 @@
                 android:textColor="@color/write"
                 android:text="@string/downloadmusic"
                 android:background="@null"
-                android:drawablePadding="10dp"
-                android:textSize="22sp"
+                android:drawablePadding="10px"
+                android:textSize="22px"
                 android:drawableTop="@drawable/download"
                 android:layout_centerHorizontal="true"
                 android:layout_width="wrap_content"
@@ -84,8 +84,8 @@
                 android:textColor="@color/write"
                 android:text="@string/historymusic"
                 android:background="@null"
-                android:drawablePadding="10dp"
-                android:textSize="22sp"
+                android:drawablePadding="10px"
+                android:textSize="22px"
                 android:drawableTop="@drawable/history"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"  />
@@ -93,15 +93,15 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="10dp"
+            android:layout_margin="10px"
             android:layout_toRightOf="@+id/layout_login"
             android:layout_below="@+id/layouttop"
             android:background="@drawable/layout_bg"
-            android:padding="20dp"
+            android:padding="20px"
             >
                 <TextView
                     android:textColor="@color/write"
-                    android:textSize="22sp"
+                    android:textSize="22px"
                     android:text="@string/my_songlist"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -130,7 +130,7 @@
                 <TextView
                     android:id="@+id/tv_lovecount"
                     android:textColor="@color/write"
-                    android:textSize="22sp"
+                    android:textSize="22px"
                     android:text="0 首"
                     android:layout_marginTop="10px"
                     android:layout_marginLeft="20px"
