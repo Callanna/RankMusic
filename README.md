@@ -41,6 +41,7 @@ RankMusic音乐排行榜 一个使用kotlin 语言开发的android项目。
  
 呵呵在此感谢大神分享，纯干货。  
 
+### 各位同学，因为音乐源来自阿里云API市场[“QQ音乐排行榜”](https://market.aliyun.com/products/56928004/cmapi013180.html?spm=5176.730005.0.0.fHj4Pm#sku=yuncode718000000)，如果获取不到音乐列表，可以自行购买，0元/1000次,是免费的。然后获得自己的appcode.将代码中ApiModule配置必要参数值“Authorization” 的APPCODE换成你自己申请的就可以了。
 
 嗯，现在项目处于初级开发阶段，有很多问题，希望大家包涵。 
 
