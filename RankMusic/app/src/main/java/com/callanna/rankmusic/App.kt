@@ -35,5 +35,4 @@ class App : Application() {
         var playCurrentType:String = ""
     }
 
-
 }
