@@ -1,7 +1,7 @@
 package com.callanna.rankmusic
 
-import android.app.Application
 import android.os.Handler
+import android.support.multidex.MultiDexApplication
 import com.callanna.rankmusic.bean.Music
 import com.callanna.rankmusic.dagger.compontent.ApiComponent
 import com.callanna.rankmusic.dagger.compontent.DaggerApiComponent
@@ -12,7 +12,7 @@ import javax.inject.Inject
 /**
  * Created by Callanna on 2017/5/26.
  */
-class App : Application() {
+class App : MultiDexApplication()  {
     init {
         instance = this
     }
@@ -28,7 +28,6 @@ class App : Application() {
         super.onCreate()
         DaggerApiComponent.builder().apiModule(ApiModule()).appModule(AppModule(this)).build().inject(this)
     }
-
 
     companion object {
         lateinit var instance: App

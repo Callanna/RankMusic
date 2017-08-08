@@ -28,7 +28,7 @@ public class CustomIndicator extends View implements ViewPager.OnPageChangeListe
     private int previouslyActiveItem = 99;
     private static final int SELECTED_FACTOR = 2;
     private static final int SPACING_FACTOR = 1;
-    private float radius = 30f;
+    private float radius = 10f;
     private float calculatedRadius, constantRadius, previousRadius;
     private String shape = "", circle = "", rectangle = "";
     private Context context;
@@ -60,15 +60,15 @@ public class CustomIndicator extends View implements ViewPager.OnPageChangeListe
         fillPaint.setStyle(Paint.Style.FILL);
         fillPaint.setStrokeJoin(Paint.Join.ROUND);
         fillPaint.setStrokeCap(Paint.Cap.ROUND);
-        fillPaint.setStrokeWidth(10);
+        fillPaint.setStrokeWidth(5);
 
         if (strokeColor == 0) {
             strokeColor = fillColor;
         }
         strokePaint.setAntiAlias(true);
         strokePaint.setStyle(Paint.Style.STROKE);
-        strokePaint.setStrokeWidth((radius / 10) * 2);
-        calculatedRadius = (radius / 10) * 3;
+        strokePaint.setStrokeWidth((radius / 5) * 2);
+        calculatedRadius = (radius / 5) * 3;
         //size of inactive indicator
         constantRadius = calculatedRadius;
     }

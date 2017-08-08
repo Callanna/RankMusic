@@ -15,4 +15,6 @@
     <string name="historymusic">最近播放</string>
     <string name="my_songlist">我的歌单</string>
     <string name="my_lovesonglist">我喜歡的歌曲</string>
+    <string name="start">开始</string>
+    <string name="stop">暂停</string>
 </resources>

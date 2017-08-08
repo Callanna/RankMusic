@@ -124,14 +124,13 @@
                          android:id="@+id/btn_play"
                          android:layout_centerInParent="true"
                          android:background="@mipmap/ic_stop"
-                         android:layout_marginLeft="40dp"
-                         android:layout_marginRight="40dp"
                          android:layout_width="48px"
                          android:layout_height="48px" />
                      <Button
                          android:id="@+id/btn_next"
                          android:layout_centerVertical="true"
                          android:background="@mipmap/ic_next"
+                         android:layout_marginLeft="40dp"
                          android:layout_toRightOf="@+id/btn_play"
                          android:layout_width="40px"
                          android:layout_height="40px" />
@@ -140,18 +139,38 @@
                          android:id="@+id/btn_pre"
                          android:layout_centerVertical="true"
                          android:background="@mipmap/ic_pre"
+                         android:layout_marginRight="40dp"
                          android:layout_toLeftOf="@+id/btn_play"
                          android:layout_width="40px"
                          android:layout_height="40px" />
 
                      <ImageView
                          android:id="@+id/imv_playmode"
-                         android:layout_marginRight="20px"
                          android:layout_centerVertical="true"
                          android:layout_marginTop="20px"
                          android:background="@mipmap/ic_cycle"
                          android:layout_below="@+id/btn_pre"
-                         android:layout_alignLeft="@+id/btn_pre"
+                         android:layout_toLeftOf="@+id/btn_pre"
+                         android:layout_width="48px"
+                         android:layout_height="48px" />
+                     <ImageView
+                         android:id="@+id/imv_download"
+                         android:layout_centerVertical="true"
+                         android:layout_marginTop="20px"
+                         android:background="@mipmap/ic_download"
+                         android:layout_below="@+id/btn_play"
+                         android:layout_toLeftOf="@+id/btn_play"
+                         android:layout_width="42px"
+                         android:layout_height="42px" />
+                     <CheckBox
+                         android:id="@+id/cb_love"
+                         android:button="@null"
+                         android:checked="true"
+                         android:layout_centerVertical="true"
+                         android:layout_marginTop="20px"
+                         android:background="@drawable/love_selector"
+                         android:layout_below="@+id/btn_play"
+                         android:layout_toRightOf="@+id/btn_play"
                          android:layout_width="42px"
                          android:layout_height="42px" />
                      <CheckBox
@@ -161,7 +180,7 @@
                          android:checked="true"
                          android:layout_marginTop="20px"
                          android:layout_below="@+id/btn_next"
-                         android:layout_alignRight="@+id/btn_next"
+                         android:layout_toRightOf="@+id/btn_next"
                          android:background="@drawable/cb_songword_selector"
                          android:layout_width="42px"
                          android:layout_height="42px" />

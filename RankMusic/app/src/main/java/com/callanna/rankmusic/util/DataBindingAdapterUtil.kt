@@ -51,9 +51,24 @@ fun loadAsset(imageView: ImageView, id: Int) =
                 textview.text = App.instance.getText(R.string.text_korea)
             Constants.SEARCH->
                 textview.text = "搜索结果"
+            Constants.MyLove->
+                    textview.text = App.instance.getText(R.string.my_lovesonglist)
+            Constants.MyMUSIC->
+                    textview.text = App.instance.getText(R.string.localmusic)
+            Constants.DownLoadING->
+                    textview.text = App.instance.getText(R.string.downloadmusic)
+            Constants.History->
+                    textview.text = App.instance.getText(R.string.historymusic)
+
             else->
                 textview.text = ""
          }
+
+//@BindingAdapter("load_songdownload")
+//fun load_songdownload(imageview: TextView,url:String)  =
+//        RxDownLoad.getInstance(App.instance).download(url)
+
+
 @BindingAdapter("visibility_tag")
      fun visibilityTag(view: LoadingIndicatorView, type:String) =
-        if(type.equals(App.playCurrentType)) view.visibility = View.VISIBLE else view.visibility = View.INVISIBLE
+           if(type.equals(App.playCurrentType)) view.visibility = View.VISIBLE else view.visibility = View.INVISIBLE

@@ -16,6 +16,7 @@ interface PlayContract{
         fun setMode(mode :Int = Constants.MODE_ORDER)
         fun setCurrentSong(song:Music)
         fun setSongLrc(lrc:String)
+        fun setCheckLove(checked:Boolean)
     }
     interface Model{
         fun getSongList(type :String): Observable<List<Music>>
@@ -34,5 +35,7 @@ interface PlayContract{
         fun pre()
         fun setMode(mode:Int)
         fun changeMode()
+        fun download()
+        fun setLove(checked: Boolean)
     }
 }

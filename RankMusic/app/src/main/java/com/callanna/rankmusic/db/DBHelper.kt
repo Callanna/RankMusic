@@ -33,6 +33,9 @@ class DBHelper(ctx: Context = App.instance) : ManagedSQLiteOpenHelper(ctx,
         val ALBUMID = "albumid"
         val TYPE = "type"
         val LRC = "lrc"
+        val LastPlayTime = "lastPlayTime"
+        val isLove = "isLove"
+        val DownLoadType = "downLoadType"
     }
 
     override fun onCreate(db: SQLiteDatabase) {
@@ -50,6 +53,9 @@ class DBHelper(ctx: Context = App.instance) : ManagedSQLiteOpenHelper(ctx,
                 MusicTable.SINGER_NAME to TEXT,
                 MusicTable.ALBUMID to INTEGER,
                 MusicTable.TYPE to TEXT,
+                MusicTable.DownLoadType to TEXT,
+                MusicTable.isLove to INTEGER,
+                MusicTable.LastPlayTime to INTEGER,
                 MusicTable.LRC to TEXT)
     }
 

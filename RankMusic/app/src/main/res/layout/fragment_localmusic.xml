@@ -6,6 +6,7 @@
         <import type="android.view.View" />
     </data>
 <LinearLayout
+    android:background="@color/tr_gray_half"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <android.support.v7.widget.RecyclerView

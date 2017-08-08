@@ -12,10 +12,16 @@ class Constants{
         val KOREA = "16"
         val LOCAL = "5"
         val ALL = "all"
+        val MyMUSIC = "mymusic"
+        val DownLoad = "DownLoad"
+        val DownLoadING = "DownLoadING"
+        val History = "History"
+        val MyLove = "love"
 
         val MODE_ORDER = 0
         val MODE_LOOP = 1
         val MODE_REPEAT = 2
         val SEARCH = "search"
+
     }
 }

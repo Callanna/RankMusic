@@ -2,9 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
     <data>
-
         <import type="android.view.View"></import>
     </data>
 
@@ -20,21 +18,20 @@
             android:layout_height="match_parent"
             android:layout_margin="10px"
             android:background="@drawable/layout_bg"
-            android:gravity="center_vertical"
-            android:padding="20px">
+            android:gravity="center" >
 
             <ImageView
                 android:id="@+id/imv_head"
-                android:layout_width="100px"
-                android:layout_height="100px"
+                android:layout_width="80px"
+                android:layout_height="160px"
                 android:layout_centerInParent="true"
                 android:background="@drawable/user" />
 
             <Button
                 android:id="@+id/btn_login"
-                android:layout_width="100px"
+                android:layout_width="80px"
                 android:layout_height="60px"
-                android:layout_margin="20px"
+                android:layout_marginTop="60px"
                 android:layout_below="@+id/imv_head"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/layout_bg"
@@ -106,6 +103,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             <RelativeLayout
+                android:id="@+id/layout_love"
                 android:background="@drawable/layout_bg"
                 android:layout_marginTop="40px"
                 android:gravity="center_vertical"

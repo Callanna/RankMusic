@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="song"
+            type="com.callanna.rankmusic.bean.Music" />
+    </data>
+
+    <com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:paddingBottom="20px"
+        android:layout_height="100px">
+
+        <ImageView
+            android:id="@+id/tv_rank"
+            android:layout_centerVertical="true"
+            android:layout_width="100px"
+            android:gravity="center"
+            android:layout_marginRight="10px"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            app:load_image="@{song.albumpic_small}"
+             />
+
+        <TextView
+            android:id="@+id/tv_songname"
+            android:layout_width="wrap_content"
+            android:layout_height="70px"
+            android:textSize="24px"
+            android:textColor="@color/tr_write_half"
+            android:gravity="center_vertical|left"
+            android:layout_toRightOf="@+id/tv_rank"
+            android:text="@{song.songname}" />
+
+        <TextView
+            android:id="@+id/tv_singer"
+            android:gravity="center_vertical|left"
+            android:layout_width="wrap_content"
+            android:layout_height="30px"
+            android:textSize="20px"
+            android:textColor="@color/write_half"
+            android:layout_below="@+id/tv_songname"
+            android:layout_toRightOf="@+id/tv_rank"
+            android:text="@{song.singername}" />
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+</layout>

@@ -8,6 +8,7 @@ import android.databinding.DataBindingUtil
 import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.SeekBar
@@ -33,7 +34,6 @@ class PlayActivity : BaseBindingActivity<ActivityPlayBinding>(), PlayContract.Vi
 
     private val lrcFragment: LrcFragment = LrcFragment.newInstance()
 
-
     @Inject lateinit var mPresenter: PlayPresenter
     override fun initView(savedInstanceState: Bundle?) {
         if(savedInstanceState!= null){
@@ -43,9 +43,9 @@ class PlayActivity : BaseBindingActivity<ActivityPlayBinding>(), PlayContract.Vi
             mBinding.type = intent.getStringExtra(TYPE)
             App.playCurrentType = mBinding.type
         }
-        mBinding.root.setOnClickListener {
-            supportFinishAfterTransition()
-        }
+//        mBinding.root.setOnClickListener {
+//            supportFinishAfterTransition()
+//        }
         setupToolbar(toolbar)
         getMainComponent().plus(PlayMusicModule(this)).inject(this)
         musiclistFragment.setPresenter(mPresenter)
@@ -126,8 +126,12 @@ class PlayActivity : BaseBindingActivity<ActivityPlayBinding>(), PlayContract.Vi
             mPresenter.changeMode()
         }
 
-       // MainContentUtil.getInstance().init(this)
-        //MainContentUtil.getInstance().addMainContent(lrcFragment, false)
+        imv_download.setOnClickListener {
+            mPresenter.download()
+        }
+       cb_love.setOnClickListener {
+           mPresenter.setLove(cb_love.isChecked)
+       }
        addFragments(R.id.layout_content,lrcFragment)
     }
     override fun createDataBinding(savedInstanceState: Bundle?): ActivityPlayBinding {
@@ -166,6 +170,12 @@ class PlayActivity : BaseBindingActivity<ActivityPlayBinding>(), PlayContract.Vi
         mBinding.executePendingBindings()
         musiclistFragment.update()
 
+    }
+    override fun setCheckLove(checked: Boolean) {
+        Log.d("duanyl","setCheckLove=========>"+checked)
+        runUI {
+            cb_love.isChecked = checked
+        }
     }
 
     override fun stop() {

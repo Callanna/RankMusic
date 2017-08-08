@@ -16,19 +16,21 @@
         android:focusableInTouchMode="true"
         android:paddingTop="30px"
         tools:context="com.callanna.rankmusic.ui.activity.MainActivity">
-<customview.CustomIndicator
-    android:id="@+id/indicator"
-    android:layout_centerHorizontal="true"
-    android:layout_alignParentBottom="true"
-    android:layout_width="match_parent"
-    android:layout_height="40px" />
-<android.support.v4.view.ViewPager
-    android:id="@+id/viewpager"
-    android:layout_above="@+id/indicator"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-</android.support.v4.view.ViewPager>
+        <customview.CustomIndicator
+            android:id="@+id/indicator"
+            android:layout_width="match_parent"
+            android:layout_height="20px"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/indicator">
+
+        </android.support.v4.view.ViewPager>
 
     </com.zhy.autolayout.AutoRelativeLayout>
 </layout>

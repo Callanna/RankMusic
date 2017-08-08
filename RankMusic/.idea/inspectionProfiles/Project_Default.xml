@@ -2,6 +2,7 @@
   <profile version="1.0">
     <option name="myName" value="Project Default" />
     <option name="myLocal" value="true" />
+    <inspection_tool class="Destructure" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="RemoveEmptyClassBody" enabled="true" level="WARNING" enabled_by_default="true" />
   </profile>
 </component>

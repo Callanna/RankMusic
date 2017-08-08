@@ -1,12 +1,14 @@
 package com.callanna.rankmusic.mvp.model
 
 import android.util.Log
+import com.callanna.rankmusic.App
 import com.callanna.rankmusic.api.MusicApi
 import com.callanna.rankmusic.bean.Music
 import com.callanna.rankmusic.bean.SongLrc
 import com.callanna.rankmusic.db.MusicDBManager
 import com.callanna.rankmusic.mvp.contract.MainContract
 import com.callanna.rankmusic.util.Constants
+import com.callanna.rankmusic.util.MediaUtils
 import rx.Observable
 import javax.inject.Inject
 
@@ -46,5 +48,34 @@ class MainModel
             Log.d("duanyl","getData api")
             return api.getRankByID(type).map({t -> MusicDBManager.instance.addMusicList(type,t.getSongLista()) ;return@map t.getSongLista()})
         }
+    }
+
+    override fun  getMyMusic(): Observable<List<Music>> {
+        var muiscs = MusicDBManager.instance.selectByType(Constants.MyMUSIC)
+
+        if(muiscs.size >0){
+            return  Observable.just(muiscs)
+        }else{
+            var musics = MediaUtils.getAllMediaList(App.instance)
+            MusicDBManager.instance.addMusicList(Constants.MyMUSIC,musics)
+            return   Observable.just(musics)
+        }
+    }
+    override fun  getDownLoaded(): Observable<List<Music>> {
+        var muiscs = MusicDBManager.instance.getDownLoad(Constants.DownLoad)
+       return  Observable.just(muiscs)
+    }
+    override fun  getDownLoading(): Observable<List<Music>> {
+        var muiscs = MusicDBManager.instance.getDownLoad(Constants.DownLoadING)
+        return  Observable.just(muiscs)
+    }
+
+    override fun  getHistory(): Observable<List<Music>> {
+        var muiscs = MusicDBManager.instance.getHistory()
+        return  Observable.just(muiscs)
+    }
+    override fun  getMyLove(): Observable<List<Music>> {
+        var muiscs = MusicDBManager.instance.getMyLove()
+        return  Observable.just(muiscs)
     }
 }

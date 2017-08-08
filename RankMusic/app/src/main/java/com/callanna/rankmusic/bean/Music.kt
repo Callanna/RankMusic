@@ -31,6 +31,10 @@ class MusicMap(var map: MutableMap<String, Any?>){
     var albumid:Int by map
     var type:String by map
     var lrc:String by map
+    var lastPlayTime:Int by map
+    var isLove:Int by map
+    var downLoadType:String by map
+
     constructor(
             songname :String,
             seconds:Int,

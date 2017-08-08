@@ -108,6 +108,14 @@
                     android:layout_centerInParent="true"
                     android:layout_width="match_parent"
                     android:layout_height="80dp">
+                    <ImageView
+                        android:id="@+id/imv_download"
+                        android:layout_marginRight="40px"
+                        android:layout_centerVertical="true"
+                        android:background="@mipmap/ic_download"
+                        android:layout_toLeftOf="@+id/btn_pre"
+                        android:layout_width="42px"
+                        android:layout_height="42px" />
 
 
                     <Button
@@ -139,9 +147,9 @@
                         android:layout_marginRight="40px"
                         android:layout_centerVertical="true"
                         android:background="@mipmap/ic_cycle"
-                        android:layout_toLeftOf="@+id/btn_pre"
-                        android:layout_width="42px"
-                        android:layout_height="42px" />
+                        android:layout_toLeftOf="@+id/imv_download"
+                        android:layout_width="48px"
+                        android:layout_height="48px" />
                     <CheckBox
                         android:id="@+id/cb_word"
                         android:layout_marginLeft="40px"
@@ -149,6 +157,16 @@
                         android:button="@null"
                         android:checked="true"
                         android:background="@drawable/cb_songword_selector"
+                        android:layout_toRightOf="@+id/cb_love"
+                        android:layout_width="42px"
+                        android:layout_height="42px" />
+                    <CheckBox
+                        android:id="@+id/cb_love"
+                        android:button="@null"
+                        android:checked="true"
+                        android:layout_marginLeft="40px"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/love_selector"
                         android:layout_toRightOf="@+id/btn_next"
                         android:layout_width="42px"
                         android:layout_height="42px" />

@@ -16,4 +16,5 @@ interface ApiComponent{
 
     fun plus(module: PlayMusicModule):PlayMusicComponent
 
+    fun plus(module: ListMusicModule):ListMusicComponent
 }

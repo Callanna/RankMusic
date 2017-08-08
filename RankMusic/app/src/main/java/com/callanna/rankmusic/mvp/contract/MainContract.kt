@@ -20,6 +20,11 @@ interface MainContract{
         fun getData(type :String):Observable<List<Music>>
         fun getSongLrc(songId:String):Observable<SongLrc>
         fun searchByKey(key:String):Observable<List<Music>>
+        fun getMyMusic():Observable<List<Music>>
+        fun getMyLove():Observable<List<Music>>
+        fun getDownLoaded():Observable<List<Music>>
+        fun getDownLoading():Observable<List<Music>>
+        fun getHistory():Observable<List<Music>>
     }
 
     interface Presenter{
