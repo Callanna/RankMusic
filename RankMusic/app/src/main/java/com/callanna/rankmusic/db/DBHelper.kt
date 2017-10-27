@@ -19,7 +19,7 @@ class DBHelper(ctx: Context = App.instance) : ManagedSQLiteOpenHelper(ctx,
 
     //定义歌曲表字段
     object MusicTable {
-        val T_NAME = "music"//数据表名称
+        val T_NAME = "qq_music"//数据表名称
         val SONGNAME = "songname"
         val SECONDS = "seconds"
         val ALBUMMID = "albummid"
@@ -39,12 +39,12 @@ class DBHelper(ctx: Context = App.instance) : ManagedSQLiteOpenHelper(ctx,
     }
 
     override fun onCreate(db: SQLiteDatabase) {
-        //创建学生对应地表
+        //创建Music对应地表
         db.createTable(MusicTable.T_NAME, true,
                 MusicTable.SONGID to INTEGER + PRIMARY_KEY,
                 MusicTable.SONGNAME to TEXT,
                 MusicTable.SECONDS to INTEGER,
-                MusicTable.ALBUMMID to INTEGER,
+                MusicTable.ALBUMMID to TEXT,
                 MusicTable.SINGERID to INTEGER,
                 MusicTable.ALBUMPIC_BIG to TEXT,
                 MusicTable.ALBUMPIC_SMALL to TEXT,

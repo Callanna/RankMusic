@@ -1,6 +1,7 @@
 package com.callanna.rankmusic.db
 
 import android.content.ContentValues
+import android.database.sqlite.SQLiteDatabase
 import android.os.SystemClock
 import android.util.Log
 import com.callanna.rankmusic.bean.Music
@@ -8,6 +9,7 @@ import com.callanna.rankmusic.bean.MusicMap
 import com.ldm.kotlin.db.DBHelper
 import org.jetbrains.anko.db.MapRowParser
 import org.jetbrains.anko.db.SelectQueryBuilder
+import org.jetbrains.anko.db.SqlOrderDirection
 import org.jetbrains.anko.db.select
 import java.util.*
 
@@ -27,9 +29,13 @@ class MusicDBManager {
         dbHelper = DBHelper()
     }
 
-    public fun selectByType(type: String): List<Music> = dbHelper.writableDatabase.select(DBHelper.MusicTable.T_NAME)
+    public fun selectByType(type: String): List<Music> =
+            dbHelper.writableDatabase.select(DBHelper.MusicTable.T_NAME)
             .whereSimple("${DBHelper.MusicTable.TYPE} = ?", type)
-            .parseList { MusicMap(HashMap(it)) }.map { it.toMusic() }
+                    .orderBy(DBHelper.MusicTable.SECONDS,SqlOrderDirection.ASC)
+            .parseList { MusicMap(HashMap(it)) }.map {
+               it.toMusic()
+            }
 
     public fun selectByAll(): List<Music> = dbHelper.writableDatabase.select(DBHelper.MusicTable.T_NAME)
             .parseList { MusicMap(HashMap(it)) }.map { it.toMusic() }
@@ -41,6 +47,7 @@ class MusicDBManager {
     public fun addMusicList(type: String, musics: List<Music>) {
         var value = ContentValues()
         for (item in musics) {
+           Log.d("MusicDB" ,""+item.toString())
             value.put(DBHelper.MusicTable.SONGID, item.songid)
             value.put(DBHelper.MusicTable.SONGNAME, item.songname)
             value.put(DBHelper.MusicTable.SINGERID, item.singerid)
@@ -57,7 +64,7 @@ class MusicDBManager {
             value.put(DBHelper.MusicTable.DownLoadType, "")
             value.put(DBHelper.MusicTable.isLove, 0)
             value.put(DBHelper.MusicTable.LastPlayTime, 0)
-            dbHelper.writableDatabase.insert(DBHelper.MusicTable.T_NAME, null, value)
+            dbHelper.writableDatabase.insertWithOnConflict(DBHelper.MusicTable.T_NAME, null, value,SQLiteDatabase.CONFLICT_REPLACE)
         }
     }
 
@@ -79,7 +86,7 @@ class MusicDBManager {
         value.put(DBHelper.MusicTable.DownLoadType, "")
         value.put(DBHelper.MusicTable.isLove, 0)
         value.put(DBHelper.MusicTable.LastPlayTime, 0)
-        dbHelper.writableDatabase.insert(DBHelper.MusicTable.T_NAME, null, value)
+        dbHelper.writableDatabase.insertWithOnConflict(DBHelper.MusicTable.T_NAME, null, value,SQLiteDatabase.CONFLICT_REPLACE)
     }
 
     public fun savelove(songId: String, love: Boolean) {

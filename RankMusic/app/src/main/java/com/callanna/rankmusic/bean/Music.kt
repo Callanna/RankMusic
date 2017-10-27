@@ -1,5 +1,7 @@
 package com.callanna.rankmusic.bean
 
+import android.util.Log
+
 /**
  * Created by Callanna on 2017/5/26.
  */
@@ -60,6 +62,9 @@ class MusicMap(var map: MutableMap<String, Any?>){
         this.singername = singername
         this.albumid = albumid
     }
-   fun toMusic():Music = Music(this.songname,this.seconds,this.albummid,this.songid,this.singerid,
+   fun toMusic():Music{
+      Log.d("MusicGET","get >>"+ this.songname + ","+this.url)
+      return Music(this.songname,this.seconds,this.albummid,this.songid,this.singerid,
            this.albumpic_big,this.albumpic_small,this.downUrl,this.url,this.singername,this.albumid)
+   }
 }

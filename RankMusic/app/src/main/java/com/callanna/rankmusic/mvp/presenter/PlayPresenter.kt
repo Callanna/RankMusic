@@ -65,7 +65,7 @@ class PlayPresenter
         if(songlist.size <= position){
             return
         }
-        if( url.equals("")) {
+        if(url.equals("")) {
             MediaPlayerUtil.instance.play(songlist[position].url)
         }else{
             MediaPlayerUtil.instance.play(url)
@@ -83,6 +83,7 @@ class PlayPresenter
     }
 
     override fun getSongList(type: String) {
+        Log.d("duanyl","duanyl=====>getSongList "+type)
         currentType = type
 
         addSubscription(  when (type) {
